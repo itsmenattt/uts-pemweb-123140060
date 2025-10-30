@@ -1,0 +1,14 @@
+.search-bar-container {
+    margin-top: -50px; 
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 50; 
+}
+
+.search-bar-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
