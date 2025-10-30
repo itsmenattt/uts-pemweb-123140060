@@ -4,23 +4,14 @@
     background-size: cover;
     background-position: center;
     color: white;
-    margin-bottom: 20px; 
-}
-
-.navbar {
-    background-color: #032541;
-    width: 100%;
-    padding: 0; 
-    position: absolute;
-    top: 0;
-    z-index: 1000;
+    margin-bottom: 20px;
 }
 
 .navbar-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 20px; 
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
@@ -36,21 +27,25 @@
     font-size: 1.5rem;
     font-weight: bold;
     color: #01b4e4; 
-    margin-right: 10px;
+    margin-right: 10px; 
 }
 
-.nav-item {
+/* UPDATE: Styling untuk elemen nav yang fungsional */
+.nav-item-functional {
     color: white;
     text-decoration: none;
     font-weight: 700;
     opacity: 0.9;
     padding: 5px 0;
+    cursor: pointer; 
 }
-.nav-item:hover {
+.nav-item-functional:hover {
     color: #01b4e4;
     opacity: 1;
 }
-
+.nav-item {
+    display: none; 
+}
 .search-icon-btn {
     background: none;
     border: none;
@@ -120,14 +115,13 @@
     font-weight: 700;
     opacity: 0.9;
     padding: 5px 0;
-    cursor: pointer; /* Penting agar terlihat seperti tombol */
+    cursor: pointer; 
 }
 .nav-item-functional:hover {
     color: #01b4e4;
     opacity: 1;
 }
 
-/* Hapus atau ubah class lama jika masih ada: */
 .nav-item {
-    display: none; /* Atau hapus jika Anda sudah mengganti semua tag <a> */
+    display: none;
 }
