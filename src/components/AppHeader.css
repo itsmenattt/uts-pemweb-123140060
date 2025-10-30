@@ -113,3 +113,21 @@
         gap: 10px;
     }
 }
+
+.nav-item-functional {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    opacity: 0.9;
+    padding: 5px 0;
+    cursor: pointer; /* Penting agar terlihat seperti tombol */
+}
+.nav-item-functional:hover {
+    color: #01b4e4;
+    opacity: 1;
+}
+
+/* Hapus atau ubah class lama jika masih ada: */
+.nav-item {
+    display: none; /* Atau hapus jika Anda sudah mengganti semua tag <a> */
+}
