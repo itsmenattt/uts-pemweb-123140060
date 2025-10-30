@@ -4,7 +4,17 @@ import AppHeader from './components/AppHeader';
 import MovieFilter from './components/MovieFilter'; 
 import SearchResult from './components/SearchResult'; 
 import MovieModal from './components/MovieModal'; 
+// UPDATE: Import komponen LoginModal
+import LoginModal from './components/LoginModal'; 
 
+// --- Daftar Pengguna Terdaftar ---
+const REGISTERED_USERS = [
+    { username: 'user', password: '123' },
+    { username: 'nadiashva', password: 'uts-pemweb' }
+];
+// ----------------------------------------
+
+// Utility function untuk mengacak array
 const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -13,6 +23,7 @@ const shuffleArray = (array) => {
     return array;
 };
 
+// Utility function untuk mendapatkan API key
 const getApiKey = () => {
     const rawKey = import.meta.env.VITE_OMDB_API_KEY;
     return rawKey ? rawKey.trim() : null; 
@@ -31,11 +42,63 @@ function App() {
   const [detailLoading, setDetailLoading] = useState(false);
   const [movieDetail, setMovieDetail] = useState(null);
   const [isAdvancedFilterVisible, setIsAdvancedFilterVisible] = useState(true); 
+
+  // UPDATE: State Login
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoginModalVisible, setIsLoginModalVisible] = useState(false);
+
   const [favorites, setFavorites] = useState(() => {
     const saved = localStorage.getItem('movieFavorites');
     return saved ? JSON.parse(saved) : [];
   });
   
+  // --- Fungsi Login/Logout ---
+  const handleLogin = (username, password) => {
+      const user = REGISTERED_USERS.find(
+          u => u.username === username && u.password === password
+      );
+      if (user) {
+          setIsLoggedIn(true);
+          localStorage.setItem('isLoggedIn', 'true'); // Simpan status
+          return true;
+      }
+      return false;
+  };
+
+  const handleLogout = () => {
+      setIsLoggedIn(false);
+      localStorage.removeItem('isLoggedIn');
+  };
+  // --------------------------
+
+  // UPDATE: Fungsi Navigasi Filter (Movies, TV Shows, More)
+  const handleNavFilter = (navType) => {
+      let query = { title: 'popular', year: '', type: 'movie' }; 
+
+      // Tentukan query berdasarkan tipe navigasi
+      switch (navType) {
+          case 'movie':
+              // Filter Movie: Mencari film yang bagus
+              query = { title: 'best movie', year: '2020', type: 'movie' };
+              break;
+          case 'series':
+              // Filter TV Shows: Mencari serial TV populer
+              query = { title: 'hit series', year: '2023', type: 'series' };
+              break;
+          case 'more':
+              // Filter More: Mencari dokumenter populer (Genre lain)
+              query = { title: 'documentary', year: '2024', type: 'movie' };
+              break;
+          default:
+              break;
+      }
+
+      // Set filter baru dan panggil fetch data
+      setSearchQuery(query);
+      setIsAdvancedFilterVisible(false); // Sembunyikan filter lanjutan saat navigasi
+  };
+  // ------------------------------------
+
   const handleSearch = (query) => {
     setSearchQuery(query);
   };
@@ -68,6 +131,15 @@ function App() {
     });
   }, []);
 
+  // UPDATE: useEffect untuk mengecek status login awal
+  useEffect(() => {
+    const storedLogin = localStorage.getItem('isLoggedIn');
+    if (storedLogin === 'true') {
+        setIsLoggedIn(true);
+    }
+  }, []);
+  
+  // useEffect 1: Initial Load (CARI FILM AWAL)
   useEffect(() => {
       if (!API_KEY || movies.length > 0 || searchQuery !== null) return; 
   
@@ -83,15 +155,12 @@ function App() {
               if (data.Response === 'True') {
                   const filteredResults = data.Search.filter(movie => {
                       const hasPoster = movie.Poster && movie.Poster !== 'N/A';
-                      
                       const releaseYear = parseInt(movie.Year);
                       const isRecent = !isNaN(releaseYear) && releaseYear >= 2000;
-
                       return hasPoster && isRecent;
                   });
 
                   const shuffledResults = shuffleArray(filteredResults);
-                  
                   setMovies(shuffledResults.slice(0, 8)); 
 
               } else {
@@ -109,6 +178,7 @@ function App() {
   }, [API_KEY, API_URL, movies.length, searchQuery]);
 
 
+  // useEffect 2: Ambil data hasil pencarian (saat form disubmit)
   useEffect(() => {
     if (searchQuery === null || searchQuery.title === '' || !API_KEY) {
         setError(null);
@@ -144,6 +214,7 @@ function App() {
   }, [searchQuery, API_URL]);
 
 
+  // useEffect 3: Ambil Detail Film
   useEffect(() => {
     if (!selectedMovieId || !API_KEY) {
       return;
@@ -160,8 +231,8 @@ function App() {
         const data = await response.json();
 
         if (data.Response === 'True') {
-          const { Title, Year, Plot, Poster, Genre, Director, Actors, imdbRating, imdbID } = data;
-          setMovieDetail({ Title, Year, Plot, Poster, Genre, Director, Actors, imdbRating, imdbID });
+          const { Title, Year, Plot, Poster, Genre, Director, Actors, imdbRating, imdbID, Runtime, Rated } = data;
+          setMovieDetail({ Title, Year, Plot, Poster, Genre, Director, Actors, imdbRating, imdbID, Runtime, Rated });
         } else {
           console.error("Gagal ambil detail:", data.Error);
         }
@@ -184,6 +255,11 @@ function App() {
       <AppHeader 
         onToggleFilter={toggleAdvancedFilter}
         isFilterActive={isAdvancedFilterVisible}
+        // UPDATE: Kirim props Login/Navigasi
+        isLoggedIn={isLoggedIn}
+        onLoginClick={() => setIsLoginModalVisible(true)}
+        onLogout={handleLogout}
+        onNavFilter={handleNavFilter}
       />
       
       <div className="container">
@@ -209,6 +285,13 @@ function App() {
           isFavorite={isFavorite}
         />
       )}
+      
+      {/* UPDATE: Komponen Login Modal */}
+      <LoginModal
+          isVisible={isLoginModalVisible}
+          onClose={() => setIsLoginModalVisible(false)}
+          onLogin={handleLogin}
+      />
     </main>
   );
 }
