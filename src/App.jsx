@@ -93,9 +93,8 @@ function App() {
               break;
       }
 
-      // Set filter baru dan panggil fetch data
       setSearchQuery(query);
-      setIsAdvancedFilterVisible(false); // Sembunyikan filter lanjutan saat navigasi
+      setIsAdvancedFilterVisible(false); 
   };
   // ------------------------------------
 
@@ -131,7 +130,6 @@ function App() {
     });
   }, []);
 
-  // UPDATE: useEffect untuk mengecek status login awal
   useEffect(() => {
     const storedLogin = localStorage.getItem('isLoggedIn');
     if (storedLogin === 'true') {
@@ -139,7 +137,6 @@ function App() {
     }
   }, []);
   
-  // useEffect 1: Initial Load (CARI FILM AWAL)
   useEffect(() => {
       if (!API_KEY || movies.length > 0 || searchQuery !== null) return; 
   
@@ -178,7 +175,6 @@ function App() {
   }, [API_KEY, API_URL, movies.length, searchQuery]);
 
 
-  // useEffect 2: Ambil data hasil pencarian (saat form disubmit)
   useEffect(() => {
     if (searchQuery === null || searchQuery.title === '' || !API_KEY) {
         setError(null);
@@ -286,7 +282,6 @@ function App() {
         />
       )}
       
-      {/* UPDATE: Komponen Login Modal */}
       <LoginModal
           isVisible={isLoginModalVisible}
           onClose={() => setIsLoginModalVisible(false)}

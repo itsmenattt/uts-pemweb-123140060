@@ -1,3 +1,4 @@
+// src/components/LoginModal.jsx
 import React, { useState } from 'react';
 import './LoginModal.css'; 
 
@@ -16,6 +17,7 @@ function LoginModal({ isVisible, onClose, onLogin }) {
 
         if (success) {
             onClose(); 
+            // Reset form setelah login berhasil
             setUsername('');
             setPassword('');
         } else {
