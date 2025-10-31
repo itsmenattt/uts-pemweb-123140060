@@ -1,9 +1,10 @@
+// src/components/AppHeader.jsx
+
 import { useState } from 'react'; 
 import './AppHeader.css';
 
 function AppHeader({ onToggleFilter, isFilterActive, isLoggedIn, onLoginClick, onLogout, onNavFilter, onSearch }) { 
-    const heroImageUrl = 'https://images.unsplash.com/photo-1536440136659-142a78dc1241?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
-
+    // State lokal untuk search bar di hero (sudah tidak terpakai di sini, tapi dipertahankan jika nanti ada search hero lagi)
     const [heroSearchQuery, setHeroSearchQuery] = useState('');
 
     const handleHeroSearch = (e) => {
@@ -17,6 +18,7 @@ function AppHeader({ onToggleFilter, isFilterActive, isLoggedIn, onLoginClick, o
     return (
         <header className="hero-section"> 
             
+            {/* Navbar Utama */}
             <div className="navbar">
                 <div className="container navbar-content">
                     <div className="navbar-left">
@@ -46,11 +48,26 @@ function AppHeader({ onToggleFilter, isFilterActive, isLoggedIn, onLoginClick, o
                 </div>
             </div>
 
+            {/* Hero Overlay - Ini adalah div yang salah */}
             <div className="hero-overlay"> 
                 <div className="container header-content">
                     <div className="hero-text">
-                        <h1>Selamat datang.</h1>
-                        <h2>Jutaan film, acara TV, dan orang untuk dijelajahi. Cari tahu sekarang.</h2>      
+                        {/* HAPUS BARIS INI: */}
+                        {/* <h2>Jutaan film, acara TV, dan orang untuk dijelajahi. Cari tahu sekarang.</h2> */}
+                        
+                        {/* Pastikan H1 juga dihapus jika tidak lagi diperlukan di AppHeader */}
+                        {/* <h1>Selamat datang.</h1> */} 
+                        
+                        {/* Form search bar ini juga harusnya sudah dihapus karena diganti HeroOverlay terpisah */}
+                        {/* <form onSubmit={handleHeroSearch} className="hero-search-form">
+                            <input 
+                                type="text" 
+                                placeholder="Cari film, acara TV, orang..."
+                                value={heroSearchQuery}
+                                onChange={(e) => setHeroSearchQuery(e.target.value)}
+                            />
+                            <button type="submit">Search</button>
+                        </form> */}
                     </div>
                 </div>
             </div>

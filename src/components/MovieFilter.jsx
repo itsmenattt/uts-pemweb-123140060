@@ -15,11 +15,10 @@ function MovieFilter({ onSearch, isHero = false }) {
   };
 
   return (
-    <section className="movie-filter filter-card-container"> {}
+    <section className="movie-filter filter-card-container">
       <h2>Filter Pencarian Lanjutan</h2>
-      <form onSubmit={handleSubmit} className="advanced-filter-form filter-grid"> {}
+      <form onSubmit={handleSubmit} className="advanced-filter-form filter-grid">
         
-        {}
         <div className="form-group">
           <label htmlFor="title">Judul Film:</label>
           <input
@@ -32,7 +31,6 @@ function MovieFilter({ onSearch, isHero = false }) {
           />
         </div>
 
-        {}
         <div className="form-group">
           <label htmlFor="year">Tahun Rilis:</label>
           <input
@@ -46,7 +44,6 @@ function MovieFilter({ onSearch, isHero = false }) {
           />
         </div>
 
-        {}
         <div className="form-group">
           <label htmlFor="type">Tipe:</label>
           <select id="type" value={type} onChange={(e) => setType(e.target.value)}>
@@ -56,7 +53,6 @@ function MovieFilter({ onSearch, isHero = false }) {
           </select>
         </div>
 
-        {}
         <div className="form-group range-group">
           <label htmlFor="rating">Min. Rating: {minRating}</label>
           <input
@@ -69,7 +65,6 @@ function MovieFilter({ onSearch, isHero = false }) {
           />
         </div>
 
-        {}
         <button type="submit" className="btn-search filter-submit-btn">Cari</button>
       </form>
     </section>

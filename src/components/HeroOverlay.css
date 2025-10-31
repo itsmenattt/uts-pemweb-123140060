@@ -1,0 +1,27 @@
+.custom-overlay {
+    background-color: #0d253f; 
+    color: white;
+    padding: 40px 0; 
+    width: 100%;
+    margin-bottom: 30px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.overlay-content {
+    text-align: center;
+    padding: 0 20px;
+}
+
+.overlay-content h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.overlay-content h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    opacity: 0.9;
+    text-align: left;
+}

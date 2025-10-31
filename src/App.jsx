@@ -4,17 +4,14 @@ import AppHeader from './components/AppHeader';
 import MovieFilter from './components/MovieFilter'; 
 import SearchResult from './components/SearchResult'; 
 import MovieModal from './components/MovieModal'; 
-// UPDATE: Import komponen LoginModal
 import LoginModal from './components/LoginModal'; 
+import HeroOverlay from './components/HeroOverlay'; 
 
-// --- Daftar Pengguna Terdaftar ---
 const REGISTERED_USERS = [
     { username: 'user', password: '123' },
     { username: 'nadiashva', password: 'uts-pemweb' }
 ];
-// ----------------------------------------
 
-// Utility function untuk mengacak array
 const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -23,7 +20,6 @@ const shuffleArray = (array) => {
     return array;
 };
 
-// Utility function untuk mendapatkan API key
 const getApiKey = () => {
     const rawKey = import.meta.env.VITE_OMDB_API_KEY;
     return rawKey ? rawKey.trim() : null; 
@@ -43,7 +39,6 @@ function App() {
   const [movieDetail, setMovieDetail] = useState(null);
   const [isAdvancedFilterVisible, setIsAdvancedFilterVisible] = useState(true); 
 
-  // UPDATE: State Login
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false);
 
@@ -52,14 +47,13 @@ function App() {
     return saved ? JSON.parse(saved) : [];
   });
   
-  // --- Fungsi Login/Logout ---
   const handleLogin = (username, password) => {
       const user = REGISTERED_USERS.find(
           u => u.username === username && u.password === password
       );
       if (user) {
           setIsLoggedIn(true);
-          localStorage.setItem('isLoggedIn', 'true'); // Simpan status
+          localStorage.setItem('isLoggedIn', 'true'); 
           return true;
       }
       return false;
@@ -69,24 +63,18 @@ function App() {
       setIsLoggedIn(false);
       localStorage.removeItem('isLoggedIn');
   };
-  // --------------------------
 
-  // UPDATE: Fungsi Navigasi Filter (Movies, TV Shows, More)
   const handleNavFilter = (navType) => {
       let query = { title: 'popular', year: '', type: 'movie' }; 
 
-      // Tentukan query berdasarkan tipe navigasi
       switch (navType) {
           case 'movie':
-              // Filter Movie: Mencari film yang bagus
               query = { title: 'best movie', year: '2020', type: 'movie' };
               break;
           case 'series':
-              // Filter TV Shows: Mencari serial TV populer
               query = { title: 'hit series', year: '2023', type: 'series' };
               break;
           case 'more':
-              // Filter More: Mencari dokumenter populer (Genre lain)
               query = { title: 'documentary', year: '2024', type: 'movie' };
               break;
           default:
@@ -96,7 +84,6 @@ function App() {
       setSearchQuery(query);
       setIsAdvancedFilterVisible(false); 
   };
-  // ------------------------------------
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -210,7 +197,6 @@ function App() {
   }, [searchQuery, API_URL]);
 
 
-  // useEffect 3: Ambil Detail Film
   useEffect(() => {
     if (!selectedMovieId || !API_KEY) {
       return;
@@ -251,16 +237,18 @@ function App() {
       <AppHeader 
         onToggleFilter={toggleAdvancedFilter}
         isFilterActive={isAdvancedFilterVisible}
-        // UPDATE: Kirim props Login/Navigasi
         isLoggedIn={isLoggedIn}
         onLoginClick={() => setIsLoginModalVisible(true)}
         onLogout={handleLogout}
         onNavFilter={handleNavFilter}
+        onSearch={handleSearch}
       />
       
       <div className="container">
-        {isAdvancedFilterVisible && (
+        {isAdvancedFilterVisible ? (
             <MovieFilter onSearch={handleSearch} isHero={false} />
+        ) : (
+            <HeroOverlay />
         )}
 
         <SearchResult 
