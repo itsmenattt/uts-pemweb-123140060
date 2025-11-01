@@ -1,0 +1,53 @@
+/* src/components/Footer.css */
+
+.app-footer {
+    background-color: #132440; 
+    color: #b0bec5;
+    padding: 25px 0;
+    margin-top: 50px; 
+    border-top: 3px solid #01b4e4; 
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.footer-left p, .footer-right p {
+    margin: 5px 0;
+}
+
+.footer-left a {
+    color: #01b4e4;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-left a:hover {
+    color: #00ffc2;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.credit-text {
+    font-weight: bold;
+    color: white;
+}
+
+/* --- Responsive Design (Media Query) --- */
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column; 
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .footer-left, .footer-right {
+        width: 100%;
+        text-align: center; 
+    }
+}

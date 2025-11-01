@@ -1,30 +1,11 @@
 /* src/App.css */
 main {
+    background-color: #F5F5F5;
     min-height: 100vh; 
+    width: 100%; /* Pastikan main memiliki lebar 100% */
 }
 
-/* --- KODE ANIMASI FILTER --- */
-.filter-visibility-wrapper {
-    /* Set transisi untuk animasi halus */
-    transition: max-height 0.7s ease-in-out, opacity 0.5s ease;
-    overflow: hidden; /* Penting untuk animasi max-height */
-}
-
-.filter-visibility-wrapper.is-hidden {
-    max-height: 0; /* Tinggi 0 saat disembunyikan */
-    opacity: 0;
-    margin-bottom: 0 !important; /* Hilangkan margin filter saat tersembunyi */
-}
-
-.filter-visibility-wrapper.is-visible {
-    max-height: 1000px; /* Tinggi maksimal yang cukup besar (buat diasumsikan terlihat) */
-    opacity: 1;
-}
-/* --------------------------------- */
-
-
-/* --- Styling Background Wrapper Filter --- */
-
+/* --- KODE BACKGROUND WRAPPER FILTER --- */
 .filter-background-wrapper {
     background-image: linear-gradient(rgba(19, 36, 64, 0.8), rgba(19, 36, 64, 0.8)), 
                       url('/background.jpg'); 
@@ -32,9 +13,31 @@ main {
     background-position: center;
     background-attachment: fixed;
     
+    width: 100%; 
+    
     padding-top: 50px; 
     padding-bottom: 50px; 
     
     margin-bottom: 30px; 
     box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.5);
 }
+
+/* --- KODE ANIMASI FILTER --- */
+.filter-visibility-wrapper {
+    transition: max-height 0.7s ease-in-out, opacity 0.5s ease;
+    overflow: hidden; 
+}
+
+.filter-visibility-wrapper.is-hidden {
+    max-height: 0; 
+    opacity: 0;
+    margin-bottom: 0 !important; 
+    padding: 0;
+}
+
+.filter-visibility-wrapper.is-visible {
+    max-height: 1000px; 
+    opacity: 1;
+}
+/* --------------------------------- */
+/* ... Hapus styling lama Login/Hero yang tidak terpakai ... */

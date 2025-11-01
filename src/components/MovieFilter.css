@@ -1,31 +1,31 @@
 /* src/components/MovieFilter.css */
 
 .filter-card-container {
-  /* UPDATE: Background semi-transparan dengan sedikit blur */
-  background-color: rgba(255, 255, 255, 0.1); /* Putih transparan */
-  backdrop-filter: blur(5px); /* Efek blur pada background di belakang container */
-  -webkit-backdrop-filter: blur(5px); /* Untuk kompatibilitas Safari */
-  padding: 40px; /* Tambah padding agar lebih lega */
-  border-radius: 15px; /* Sedikit lebih membulat */
-  margin-bottom: 40px; /* Jarak lebih ke bawah */
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Efek shadow yang lebih modern */
-  border: 1px solid rgba(255, 255, 255, 0.18); /* Border tipis transparan */
+  /* UPDATE: Background semi-transparan dengan efek blur */
+  background-color: rgba(255, 255, 255, 0.1); 
+  backdrop-filter: blur(5px); 
+  -webkit-backdrop-filter: blur(5px); 
+  padding: 40px; 
+  border-radius: 15px; 
+  margin-bottom: 40px; 
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); 
+  border: 1px solid rgba(255, 255, 255, 0.18); 
 }
 
 .filter-card-container h2 {
   margin-top: 0;
   color: white; 
-  font-size: 1.8rem; /* Ukuran heading sedikit lebih besar */
-  margin-bottom: 30px; /* Jarak ke bawah heading */
-  text-align: center; /* Heading di tengah */
-  letter-spacing: 0.5px; /* Sedikit jarak antar huruf */
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Efek shadow pada teks heading */
+  font-size: 1.8rem; 
+  margin-bottom: 30px; 
+  text-align: center; 
+  letter-spacing: 0.5px; 
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .filter-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(100px, 1fr)); 
-  gap: 25px; /* Jarak antar kolom lebih besar */
+  gap: 25px; 
   align-items: end; 
 }
 .form-group {
@@ -34,76 +34,74 @@
 }
 
 .form-group label {
-  margin-bottom: 8px; /* Jarak label ke input */
-  color: white;
+  margin-bottom: 8px; 
+  color: white; /* WARNA LABEL PUTIH */
   font-weight: bold;
-  font-size: 0.95rem; /* Ukuran label sedikit lebih kecil */
+  font-size: 0.95rem; 
   opacity: 0.9;
 }
 
-.form-group input[type="text"],
-.form-group input[type="number"],
+.form-group input,
 .form-group select {
-  padding: 12px 15px; /* Padding input lebih besar */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Border transparan */
-  border-radius: 8px; /* Input lebih membulat */
+  padding: 12px 15px; 
+  border: 1px solid rgba(255, 255, 255, 0.3); 
+  border-radius: 8px; 
   font-size: 1rem;
   background-color: rgba(255, 255, 255, 0.1); /* Background input transparan */
   color: white; /* Warna teks input putih */
-  outline: none; /* Hilangkan outline default */
-  transition: all 0.3s ease; /* Transisi halus untuk hover/focus */
+  outline: none; 
+  transition: all 0.3s ease;
 }
 
 .form-group input[type="text"]::placeholder,
 .form-group input[type="number"]::placeholder {
-    color: rgba(255, 255, 255, 0.7); /* Placeholder lebih terang */
+    color: rgba(255, 255, 255, 0.7); 
 }
 
 .form-group input[type="text"]:focus,
 .form-group input[type="number"]:focus,
 .form-group select:focus {
-    border-color: #01b4e4; /* Border focus warna biru terang */
-    background-color: rgba(255, 255, 255, 0.2); /* Background focus sedikit lebih terang */
+    border-color: #01b4e4; 
+    background-color: rgba(255, 255, 255, 0.2); 
 }
 
 .form-group select option {
-    background-color: #0d253f; /* Background option dropdown gelap */
+    background-color: #0d253f; 
     color: white;
 }
 
 /* --- Styling Range Slider --- */
 .range-group {
     align-self: start; 
-    margin-top: 5px; /* Sedikit geser ke bawah agar sejajar */
+    margin-top: 5px; 
 }
 
 .range-group input[type="range"] {
-    -webkit-appearance: none; /* Hapus styling default browser */
+    -webkit-appearance: none; 
     appearance: none;
     width: 100%;
-    height: 8px; /* Tinggi slider */
-    background: rgba(255, 255, 255, 0.3); /* Track slider transparan */
+    height: 8px; 
+    background: rgba(255, 255, 255, 0.3); 
     outline: none;
     border-radius: 5px;
     transition: background 0.2s ease;
 }
 
-/* Thumb (pegangan) slider */
 .range-group input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #01b4e4; /* Warna biru terang */
+    background: #01b4e4; 
     cursor: pointer;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .range-group input[type="range"]::-webkit-slider-thumb:hover {
-    background: #00a2cc; /* Warna biru lebih gelap saat hover */
-    transform: scale(1.1); /* Efek membesar */
+    background: #00a2cc; 
+    transform: scale(1.1); 
 }
 
 .range-group input[type="range"]::-moz-range-thumb {
@@ -125,31 +123,31 @@
 /* --- Styling Button Cari --- */
 .filter-submit-btn {
   grid-column: span 1;
-  padding: 12px 25px; /* Padding button lebih besar */
-  background: linear-gradient(to right, #01b4e4, #00ffc2); /* Gradient warna */
-  color: #0d253f; /* Warna teks button lebih gelap */
+  padding: 12px 25px; 
+  background: linear-gradient(to right, #01b4e4, #00ffc2); 
+  color: #0d253f; 
   border: none;
-  border-radius: 8px; /* Membulat */
+  border-radius: 8px; 
   cursor: pointer;
-  font-size: 1.05rem; /* Ukuran teks button */
+  font-size: 1.05rem; 
   font-weight: bold;
-  box-shadow: 0 5px 15px rgba(0, 255, 194, 0.4); /* Shadow yang menonjol */
-  transition: all 0.3s ease; /* Transisi untuk semua properti */
+  box-shadow: 0 5px 15px rgba(0, 255, 194, 0.4); 
+  transition: all 0.3s ease; 
   letter-spacing: 0.5px;
 }
 
 .filter-submit-btn:hover {
-  transform: translateY(-3px); /* Efek sedikit naik */
-  box-shadow: 0 8px 20px rgba(0, 255, 194, 0.6); /* Shadow lebih besar */
-  background: linear-gradient(to left, #01b4e4, #00ffc2); /* Reverse gradient */
+  transform: translateY(-3px); 
+  box-shadow: 0 8px 20px rgba(0, 255, 194, 0.6); 
+  background: linear-gradient(to left, #01b4e4, #00ffc2); 
   color: white;
 }
 
-/* --- Media Queries (Tetap Sama, mungkin sedikit penyesuaian gap) --- */
+/* --- Media Queries --- */
 @media (max-width: 900px) {
     .filter-grid {
         grid-template-columns: repeat(3, 1fr); 
-        gap: 20px; /* Sesuaikan gap */
+        gap: 20px; 
     }
     .filter-submit-btn {
         grid-column: span 1;
@@ -158,7 +156,7 @@
 
 @media (max-width: 600px) {
     .filter-card-container {
-        padding: 25px; /* Padding lebih kecil di mobile */
+        padding: 25px; 
     }
     .filter-card-container h2 {
         font-size: 1.5rem;
@@ -166,7 +164,7 @@
     }
     .filter-grid {
         grid-template-columns: repeat(2, 1fr); 
-        gap: 15px; /* Sesuaikan gap */
+        gap: 15px; 
     }
     .range-group {
         grid-column: span 2;
