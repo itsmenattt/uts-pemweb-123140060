@@ -1,3 +1,5 @@
+/* src/components/AppHeader.css */
+
 .navbar-fixed {
     position: sticky;
     top: 0;
@@ -46,30 +48,44 @@
     opacity: 1;
 }
 
+/* START PERUBAHAN KRITIS: STYLING BUTTON PENCARIAN */
 .search-icon-btn {
     background: none;
     border: none;
-    color: #01b4e4; 
-    font-size: 1.3rem;
     cursor: pointer;
-    margin-right: 10px;
-}
-.search-icon-btn.is-active {
-    color: #fff;
-    filter: brightness(1.2);
+    padding: 0; 
+    width: 30px; /* Lebar tombol */
+    height: 30px; /* Tinggi tombol */
+    display: flex; /* Untuk memposisikan gambar di tengah */
+    justify-content: center;
+    align-items: center;
+    margin-right: -5px;
+    opacity: 0.8;
 }
 
+.search-icon-btn:hover {
+    opacity: 1;
+}
+
+.search-icon-img {
+    width: 70%; /* Gambar mengisi lebar tombol */
+    height: 70%; /* Gambar mengisi tinggi tombol */
+    object-fit: contain; /* Memastikan gambar tidak terdistorsi */
+    transition: transform 0.2s;
+}
+
+.search-icon-btn.is-active .search-icon-img {
+    transform: rotate(45deg); /* Efek rotasi saat filter aktif */
+}
+/* END PERUBAHAN KRITIS */
+
+/* --- Media Queries --- */
 @media (max-width: 768px) {
-    .navbar-content {
-        flex-direction: column;
-        gap: 10px;
-    }
-    .navbar-left, .navbar-right {
-        width: 100%;
-        justify-content: center;
-    }
     .main-nav {
-        flex-wrap: wrap;
-        justify-content: center;
+        display: none; /* Sembunyikan navigasi utama di mobile */
+    }
+    
+    .navbar-left {
+        gap: 10px;
     }
 }

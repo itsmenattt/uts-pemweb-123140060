@@ -1,7 +1,9 @@
 import { useState } from 'react'; 
 import './AppHeader.css';
 
-function AppHeader({ onToggleFilter, isFilterActive, isLoggedIn, onLoginClick, onLogout, onNavFilter, onSearch }) { 
+// Hapus props isLoggedIn, onLoginClick, onLogout
+
+function AppHeader({ onToggleFilter, isFilterActive, onNavFilter, onSearch }) { 
     
     return (
         <header className="navbar-fixed">
@@ -23,13 +25,17 @@ function AppHeader({ onToggleFilter, isFilterActive, isLoggedIn, onLoginClick, o
                             aria-label="Tampilkan atau Sembunyikan Filter Pencarian Lanjutan" 
                             tabIndex="0"
                         >
-                            🔍
+                            {/* START PERUBAHAN KRITIS */}
+                            <img 
+                                src="/button_search.png" 
+                                alt="Ikon Pencarian" 
+                                className="search-icon-img" 
+                            />
+                            {/* END PERUBAHAN KRITIS */}
                         </button>
-                        {isLoggedIn ? (
-                            <div className="nav-item-functional" onClick={onLogout} tabIndex="0">Logout</div>
-                        ) : (
-                            <div className="nav-item-functional" onClick={onLoginClick} tabIndex="0">Login</div>
-                        )}
+                        
+                        {/* Hapus elemen Login/Logout */}
+                        
                     </div>
                 </div>
             </div>
@@ -37,4 +43,5 @@ function AppHeader({ onToggleFilter, isFilterActive, isLoggedIn, onLoginClick, o
         </header>
     );
 }
+
 export default AppHeader;
