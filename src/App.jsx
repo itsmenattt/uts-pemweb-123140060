@@ -232,7 +232,7 @@ function App() {
   const isFavorite = movieDetail ? favorites.some(fav => fav.imdbID === movieDetail.imdbID) : false;
   const hasSearched = searchQuery !== null; 
 
-  return (
+return (
     <main>
       <AppHeader 
         onToggleFilter={toggleAdvancedFilter}
@@ -244,13 +244,17 @@ function App() {
         onSearch={handleSearch}
       />
       
-      <div className="container">
-        {isAdvancedFilterVisible ? (
-            <MovieFilter onSearch={handleSearch} isHero={false} />
-        ) : (
-            <HeroOverlay />
-        )}
+      <div className={`filter-visibility-wrapper ${isAdvancedFilterVisible ? 'is-visible' : 'is-hidden'}`}>
+        <div className="filter-background-wrapper">
+          <div className="container">
+            {isAdvancedFilterVisible && (
+                <MovieFilter onSearch={handleSearch} isHero={false} />
+            )}
+          </div>
+        </div>
+      </div>
 
+      <div className="container">
         <SearchResult 
           movies={movies} 
           loading={loading} 
