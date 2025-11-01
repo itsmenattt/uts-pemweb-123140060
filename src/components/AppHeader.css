@@ -3,7 +3,7 @@
 .navbar-fixed {
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1000; /* Pastikan navbar selalu di atas */
 }
 
 .navbar {
@@ -25,7 +25,8 @@
 .navbar-left, .main-nav, .navbar-right {
     display: flex;
     align-items: center;
-    gap: 20px;
+    /* Memberikan jarak antar elemen di navbar-right */
+    gap: 20px; 
 }
 
 .logo {
@@ -48,44 +49,137 @@
     opacity: 1;
 }
 
-/* START PERUBAHAN KRITIS: STYLING BUTTON PENCARIAN */
+/* START PERBAIKAN KRITIS: STYLING BUTTON PENCARIAN */
 .search-icon-btn {
     background: none;
     border: none;
     cursor: pointer;
     padding: 0; 
-    width: 30px; /* Lebar tombol */
-    height: 30px; /* Tinggi tombol */
-    display: flex; /* Untuk memposisikan gambar di tengah */
+    width: 35px; /* Tetapkan ukuran jelas */
+    height: 35px; 
+    display: flex; 
     justify-content: center;
     align-items: center;
-    margin-right: -5px;
-    opacity: 0.8;
+    /* Hilangkan margin-right yang menyebabkan tumpang tindih dengan burger menu jika gap di navbar-right sudah cukup */
+    margin: 0; 
+    opacity: 1;
+    z-index: 1001; /* Pastikan di atas elemen lain */
 }
 
 .search-icon-btn:hover {
-    opacity: 1;
+    opacity: 0.8;
 }
 
 .search-icon-img {
-    width: 70%; /* Gambar mengisi lebar tombol */
-    height: 70%; /* Gambar mengisi tinggi tombol */
-    object-fit: contain; /* Memastikan gambar tidak terdistorsi */
+    width: 100%; /* Gambar akan mengisi ukuran tombol */
+    height: 100%; 
+    object-fit: contain; 
     transition: transform 0.2s;
+    /* PENTING: Jika ikon masih terlalu besar, periksa ukuran asli file button_search.png */
+    /* Atau tambahkan max-width/max-height jika perlu */
 }
 
 .search-icon-btn.is-active .search-icon-img {
-    transform: rotate(45deg); /* Efek rotasi saat filter aktif */
+    transform: rotate(45deg);
 }
-/* END PERUBAHAN KRITIS */
+/* END PERBAIKAN KRITIS: STYLING BUTTON PENCARIAN */
+
+
+/* START PERBAIKAN KRITIS: STYLING BURGER MENU */
+.burger-menu-wrapper {
+    position: relative;
+    /* margin-left: 10px; Dihilangkan karena gap di navbar-right sudah menangani jarak */
+    z-index: 1002; /* Lebih tinggi dari tombol search jika ada overlap */
+}
+
+.burger-menu-toggle {
+    background: #132440; 
+    color: #FFFF;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    /* Pastikan ukuran cukup besar dan konsisten */
+    width: 40px; 
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.burger-menu-toggle:hover {
+    background-color: #00ffc2;
+}
+
+.burger-menu-dropdown {
+    position: absolute;
+    top: 100%; 
+    right: 0; /* Posisikan ke kanan */
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    min-width: 180px;
+    z-index: 1010; 
+    transform-origin: top right;
+    animation: scaleIn 0.2s ease-out;
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.dropdown-item {
+    padding: 12px 15px;
+    color: #333;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f2f5;
+    color: #132440;
+}
+
+.dropdown-item.primary-action {
+    background-color: #01b4e4;
+    color: white;
+    font-weight: bold;
+}
+.dropdown-item.primary-action:hover {
+    background-color: #00ffc2;
+    color: #132440;
+}
+/* END PERBAIKAN KRITIS: STYLING BURGER MENU */
 
 /* --- Media Queries --- */
 @media (max-width: 768px) {
-    .main-nav {
-        display: none; /* Sembunyikan navigasi utama di mobile */
-    }
-    
-    .navbar-left {
+    .navbar-content {
+        flex-direction: column;
         gap: 10px;
+    }
+    .navbar-left, .navbar-right {
+        width: 100%;
+        justify-content: center;
+    }
+    .main-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .burger-menu-dropdown {
+        /* Memastikan menu tidak keluar layar di mobile */
+        right: 10px; 
     }
 }

@@ -89,3 +89,16 @@
     padding-top: 10px;
     border-top: 1px solid #eee;
 }
+.switch-link {
+    font-size: 0.9em;
+    color: #007bff; /* Biru */
+    text-align: center;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    cursor: pointer;
+}
+
+.switch-link:hover {
+    text-decoration: underline;
+}

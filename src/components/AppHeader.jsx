@@ -1,10 +1,28 @@
-import { useState } from 'react'; 
+// src/components/AppHeader.jsx
+import { useState } from 'react';
 import './AppHeader.css';
 
-// Hapus props isLoggedIn, onLoginClick, onLogout
+function AppHeader({ 
+    onToggleFilter, isFilterActive, onNavFilter, onSearch, 
+    isLoggedIn, onLoginClick, onLogout 
+}) { 
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-function AppHeader({ onToggleFilter, isFilterActive, onNavFilter, onSearch }) { 
+    const handleMenuClick = (action) => {
+        setIsMenuOpen(false); 
+        
+        if (action === 'login') {
+            onLoginClick();
+        } else if (action === 'logout') {
+            onLogout();
+        } else if (action === 'favorites') {
+            console.log("Menampilkan daftar favorit..."); 
+            // TO DO: Anda perlu menambahkan prop onShowFavorites di App.jsx jika ingin mengimplementasikannya
+        }
+    };
     
+    const menuIcon = isMenuOpen ? '✕' : '☰'; 
+
     return (
         <header className="navbar-fixed">
             <div className="navbar">
@@ -18,6 +36,8 @@ function AppHeader({ onToggleFilter, isFilterActive, onNavFilter, onSearch }) {
                         </nav>
                     </div>
                     <div className="navbar-right">
+                        
+                        {/* Tombol Pencarian */}
                         <button 
                             className={`search-icon-btn ${isFilterActive ? 'is-active' : ''}`} 
                             onClick={onToggleFilter}
@@ -25,16 +45,54 @@ function AppHeader({ onToggleFilter, isFilterActive, onNavFilter, onSearch }) {
                             aria-label="Tampilkan atau Sembunyikan Filter Pencarian Lanjutan" 
                             tabIndex="0"
                         >
-                            {/* START PERUBAHAN KRITIS */}
                             <img 
                                 src="/button_search.png" 
                                 alt="Ikon Pencarian" 
                                 className="search-icon-img" 
                             />
-                            {/* END PERUBAHAN KRITIS */}
                         </button>
                         
-                        {/* Hapus elemen Login/Logout */}
+                        {/* BURGER MENU */}
+                        <div className="burger-menu-wrapper">
+                            <button 
+                                className="burger-menu-toggle"
+                                onClick={() => setIsMenuOpen(prev => !prev)}
+                                aria-expanded={isMenuOpen}
+                                aria-label="Menu Pengguna"
+                            >
+                                {menuIcon}
+                            </button>
+                            
+                            {isMenuOpen && (
+                                <div className="burger-menu-dropdown">
+                                    <div 
+                                        className="dropdown-item" 
+                                        onClick={() => handleMenuClick('favorites')}
+                                        tabIndex="0"
+                                    >
+                                        ⭐ Favorites
+                                    </div>
+                                    
+                                    {isLoggedIn ? (
+                                        <div 
+                                            className="dropdown-item" 
+                                            onClick={() => handleMenuClick('logout')}
+                                            tabIndex="0"
+                                        >
+                                            → Logout
+                                        </div>
+                                    ) : (
+                                        <div 
+                                            className="dropdown-item primary-action" 
+                                            onClick={() => handleMenuClick('login')}
+                                            tabIndex="0"
+                                        >
+                                            👤 Login / Register
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                        </div>
                         
                     </div>
                 </div>

@@ -41,36 +41,40 @@
   opacity: 0.9;
 }
 
+/* --- PERUBAHAN DI SINI --- */
 .form-group input,
 .form-group select {
   padding: 12px 15px; 
-  border: 1px solid rgba(255, 255, 255, 0.3); 
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Border lebih gelap */
   border-radius: 8px; 
   font-size: 1rem;
-  background-color: rgba(255, 255, 255, 0.1); /* Background input transparan */
-  color: white; /* Warna teks input putih */
+  background-color: rgba(255, 255, 255, 0.95); /* Latar belakang putih solid */
+  color: #333; /* Warna teks input hitam/gelap */
   outline: none; 
   transition: all 0.3s ease;
 }
 
 .form-group input[type="text"]::placeholder,
 .form-group input[type="number"]::placeholder {
-    color: rgba(255, 255, 255, 0.7); 
+    color: #888; /* Placeholder abu-abu gelap */
 }
 
 .form-group input[type="text"]:focus,
 .form-group input[type="number"]:focus,
 .form-group select:focus {
     border-color: #01b4e4; 
-    background-color: rgba(255, 255, 255, 0.2); 
+    background-color: #ffffff; /* Tetap putih saat fokus */
+    box-shadow: 0 0 5px rgba(1, 180, 228, 0.5); /* Tambah shadow fokus */
 }
 
 .form-group select option {
-    background-color: #0d253f; 
-    color: white;
+    background-color: #ffffff; /* Background option putih */
+    color: #333; /* Teks option hitam */
 }
+/* --- AKHIR PERUBAHAN --- */
 
-/* --- Styling Range Slider --- */
+
+/* --- Styling Range Slider (Tetap sama) --- */
 .range-group {
     align-self: start; 
     margin-top: 5px; 
@@ -86,7 +90,7 @@
     border-radius: 5px;
     transition: background 0.2s ease;
 }
-
+/* ... (sisa styling range slider tetap sama) ... */
 .range-group input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -120,7 +124,7 @@
 }
 
 
-/* --- Styling Button Cari --- */
+/* --- Styling Button Cari (Tetap sama) --- */
 .filter-submit-btn {
   grid-column: span 1;
   padding: 12px 25px; 
@@ -143,7 +147,7 @@
   color: white;
 }
 
-/* --- Media Queries --- */
+/* --- Media Queries (Tetap sama) --- */
 @media (max-width: 900px) {
     .filter-grid {
         grid-template-columns: repeat(3, 1fr); 

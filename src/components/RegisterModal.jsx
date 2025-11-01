@@ -1,9 +1,8 @@
-// src/components/LoginModal.jsx
+// src/components/RegisterModal.jsx
 import React, { useState } from 'react';
-import './LoginModal.css'; 
+import './LoginModal.css'; // Kita bisa gunakan ulang CSS dari LoginModal
 
-// KITA HANYA MENGUBAH BAGIAN INI:
-function LoginModal({ isVisible, onClose, onLogin, onSwitchToRegister }) {
+function RegisterModal({ isVisible, onClose, onRegister, onSwitchToLogin }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -13,51 +12,45 @@ function LoginModal({ isVisible, onClose, onLogin, onSwitchToRegister }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         setError('');
+
+        if (username.length < 3 || password.length < 3) {
+            setError('Username dan password minimal 3 karakter.');
+            return;
+        }
         
-        const success = onLogin(username, password);
+        const success = onRegister(username, password);
 
         if (success) {
-            // Kita reset state HANYA jika login sukses
+            onClose(); 
             setUsername('');
             setPassword('');
-            onClose(); 
         } else {
-            setError('Username atau password salah.');
+            setError('Username sudah digunakan. Coba nama lain.');
         }
     };
 
-    // Ini adalah fungsi onClose sederhana yang tidak me-reset state
-    // Ini diperlukan agar saat modal ditutup (tanpa login), 
-    // isinya tetap ada, tapi itu lebih baik daripada tidak bisa input.
-    const handleClose = () => {
-        setError(''); // Hanya reset error
-        onClose();
-    }
-
     return (
-        // PERBAIKAN: Gunakan handleClose (atau onClose langsung), BUKAN handleCloseAndReset
-        <div className="login-modal-overlay" onClick={handleClose}>
+        <div className="login-modal-overlay" onClick={onClose}>
             <div className="login-modal-content" onClick={e => e.stopPropagation()}>
-                {/* PERBAIKAN: Gunakan handleClose */}
-                <button className="close-button" onClick={handleClose}>&times;</button>
-                <h2>Login Pengguna</h2>
+                <button className="close-button" onClick={onClose}>&times;</button>
+                <h2>Buat Akun Baru</h2>
                 
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label htmlFor="username">Username:</label>
+                        <label htmlFor="reg-username">Username:</label>
                         <input
                             type="text"
-                            id="username"
+                            id="reg-username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="password">Password:</label>
+                        <label htmlFor="reg-password">Password:</label>
                         <input
                             type="password"
-                            id="password"
+                            id="reg-password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
@@ -66,15 +59,15 @@ function LoginModal({ isVisible, onClose, onLogin, onSwitchToRegister }) {
                     
                     {error && <p className="login-error-msg">{error}</p>}
                     
-                    <button type="submit" className="login-btn">Masuk</button>
+                    <button type="submit" className="login-btn">Daftar & Masuk</button>
                 </form>
                 
-                <p className="switch-link" onClick={onSwitchToRegister}>
-                    Belum punya akun? Daftar di sini
+                <p className="switch-link" onClick={onSwitchToLogin}>
+                    Sudah punya akun? Masuk di sini
                 </p>
             </div>
         </div>
     );
 }
 
-export default LoginModal;
+export default RegisterModal;
