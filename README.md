@@ -62,7 +62,7 @@ Contoh penempatan gambar di README (gunakan relative path):
 
 ## Identitas
 
-- **Nama:** Nadia Anata
+- **Nama:** Nadia Anatashiva
 - **NIM:** 123140060
 - **Keperluan:** UTS Pemrograman Web
 
