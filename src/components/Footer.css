@@ -1,5 +1,3 @@
-/* src/components/Footer.css */
-
 .app-footer {
     background-color: #132440; 
     color: #b0bec5;
@@ -38,7 +36,6 @@
     color: white;
 }
 
-/* --- Responsive Design (Media Query) --- */
 @media (max-width: 600px) {
     .footer-content {
         flex-direction: column; 

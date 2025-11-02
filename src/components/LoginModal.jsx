@@ -1,8 +1,6 @@
-// src/components/LoginModal.jsx
 import React, { useState } from 'react';
 import './LoginModal.css'; 
 
-// KITA HANYA MENGUBAH BAGIAN INI:
 function LoginModal({ isVisible, onClose, onLogin, onSwitchToRegister }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -17,7 +15,6 @@ function LoginModal({ isVisible, onClose, onLogin, onSwitchToRegister }) {
         const success = onLogin(username, password);
 
         if (success) {
-            // Kita reset state HANYA jika login sukses
             setUsername('');
             setPassword('');
             onClose(); 
@@ -26,19 +23,15 @@ function LoginModal({ isVisible, onClose, onLogin, onSwitchToRegister }) {
         }
     };
 
-    // Ini adalah fungsi onClose sederhana yang tidak me-reset state
-    // Ini diperlukan agar saat modal ditutup (tanpa login), 
-    // isinya tetap ada, tapi itu lebih baik daripada tidak bisa input.
     const handleClose = () => {
-        setError(''); // Hanya reset error
+        setError(''); 
         onClose();
     }
 
     return (
-        // PERBAIKAN: Gunakan handleClose (atau onClose langsung), BUKAN handleCloseAndReset
         <div className="login-modal-overlay" onClick={handleClose}>
             <div className="login-modal-content" onClick={e => e.stopPropagation()}>
-                {/* PERBAIKAN: Gunakan handleClose */}
+                {}
                 <button className="close-button" onClick={handleClose}>&times;</button>
                 <h2>Login Pengguna</h2>
                 

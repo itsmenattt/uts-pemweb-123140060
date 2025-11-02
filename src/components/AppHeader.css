@@ -1,11 +1,8 @@
-/* src/components/AppHeader.css */
-
 .navbar-fixed {
     position: sticky;
     top: 0;
-    z-index: 1000; /* Pastikan navbar selalu di atas */
+    z-index: 1000; 
 }
-
 .navbar {
     background-color: #132440; 
     width: 100%;
@@ -25,7 +22,6 @@
 .navbar-left, .main-nav, .navbar-right {
     display: flex;
     align-items: center;
-    /* Memberikan jarak antar elemen di navbar-right */
     gap: 20px; 
 }
 
@@ -34,6 +30,8 @@
     font-weight: bold;
     color: #01b4e4; 
     margin-right: 10px; 
+    cursor: pointer; 
+    user-select: none; 
 }
 
 .nav-item-functional, .nav-item {
@@ -55,15 +53,14 @@
     border: none;
     cursor: pointer;
     padding: 0; 
-    width: 35px; /* Tetapkan ukuran jelas */
+    width: 35px; 
     height: 35px; 
     display: flex; 
     justify-content: center;
     align-items: center;
-    /* Hilangkan margin-right yang menyebabkan tumpang tindih dengan burger menu jika gap di navbar-right sudah cukup */
     margin: 0; 
     opacity: 1;
-    z-index: 1001; /* Pastikan di atas elemen lain */
+    z-index: 1001; 
 }
 
 .search-icon-btn:hover {
@@ -71,30 +68,25 @@
 }
 
 .search-icon-img {
-    width: 100%; /* Gambar akan mengisi ukuran tombol */
-    height: 100%; 
+    width: 70%; 
+    height: 70%; 
     object-fit: contain; 
     transition: transform 0.2s;
-    /* PENTING: Jika ikon masih terlalu besar, periksa ukuran asli file button_search.png */
-    /* Atau tambahkan max-width/max-height jika perlu */
 }
 
 .search-icon-btn.is-active .search-icon-img {
     transform: rotate(45deg);
 }
-/* END PERBAIKAN KRITIS: STYLING BUTTON PENCARIAN */
 
 
-/* START PERBAIKAN KRITIS: STYLING BURGER MENU */
 .burger-menu-wrapper {
     position: relative;
-    /* margin-left: 10px; Dihilangkan karena gap di navbar-right sudah menangani jarak */
-    z-index: 1002; /* Lebih tinggi dari tombol search jika ada overlap */
+    z-index: 1002; 
 }
 
 .burger-menu-toggle {
     background: #132440; 
-    color: #FFFF;
+    color: #FFFF    ;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
@@ -103,7 +95,6 @@
     cursor: pointer;
     transition: background-color 0.2s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    /* Pastikan ukuran cukup besar dan konsisten */
     width: 40px; 
     height: 35px;
     display: flex;
@@ -118,7 +109,7 @@
 .burger-menu-dropdown {
     position: absolute;
     top: 100%; 
-    right: 0; /* Posisikan ke kanan */
+    right: 0; 
     margin-top: 10px;
     background-color: white;
     border-radius: 5px;
@@ -162,9 +153,7 @@
     background-color: #00ffc2;
     color: #132440;
 }
-/* END PERBAIKAN KRITIS: STYLING BURGER MENU */
 
-/* --- Media Queries --- */
 @media (max-width: 768px) {
     .navbar-content {
         flex-direction: column;
@@ -179,7 +168,6 @@
         justify-content: center;
     }
     .burger-menu-dropdown {
-        /* Memastikan menu tidak keluar layar di mobile */
         right: 10px; 
     }
 }

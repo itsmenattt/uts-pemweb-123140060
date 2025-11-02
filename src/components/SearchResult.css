@@ -16,6 +16,8 @@
 }
 
 .movie-card {
+    position: relative; 
+    
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -50,6 +52,34 @@
     font-size: 0.9rem;
     color: #777;
 }
+
+.fav-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.fav-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.fav-btn.active {
+  background-color: rgba(255, 193, 7, 0.9); 
+  color: #333; 
+}
+
 
 .loading-msg,
 .error-msg,

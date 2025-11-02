@@ -1,6 +1,5 @@
-// src/components/RegisterModal.jsx
 import React, { useState } from 'react';
-import './LoginModal.css'; // Kita bisa gunakan ulang CSS dari LoginModal
+import './LoginModal.css'; 
 
 function RegisterModal({ isVisible, onClose, onRegister, onSwitchToLogin }) {
     const [username, setUsername] = useState('');

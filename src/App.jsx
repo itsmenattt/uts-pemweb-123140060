@@ -1,5 +1,3 @@
-// src/App.jsx
-
 import { useState, useEffect, useCallback } from 'react';
 import './App.css';
 import AppHeader from './components/AppHeader'; 
@@ -8,9 +6,8 @@ import SearchResult from './components/SearchResult';
 import MovieModal from './components/MovieModal'; 
 import Footer from './components/Footer'; 
 import LoginModal from './components/LoginModal';
-import RegisterModal from './components/RegisterModal'; // <-- IMPORT BARU
+import RegisterModal from './components/RegisterModal'; 
 
-// --- (Fungsi shuffleArray dan getApiKey tetap sama) ---
 const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -27,7 +24,6 @@ const getApiKey = () => {
 const API_KEY = getApiKey();
 const API_URL = API_KEY ? `https://www.omdbapi.com/?apikey=${API_KEY}` : '';
 
-// --- FUNGSI BARU: Untuk memuat dan menyimpan database pengguna ---
 const loadUsersDB = () => {
     const db = localStorage.getItem('movieAppUsers');
     return db ? JSON.parse(db) : {};
@@ -39,39 +35,39 @@ const saveUsersDB = (db) => {
 
 
 function App() {
-  // --- STATE FILM & API ---
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState(null);
-  
-  // --- STATE MODAL DETAIL FILM ---
   const [selectedMovieId, setSelectedMovieId] = useState(null);
   const [detailLoading, setDetailLoading] = useState(false);
   const [movieDetail, setMovieDetail] = useState(null);
-  
-  // --- STATE FILTER ---
   const [isAdvancedFilterVisible, setIsAdvancedFilterVisible] = useState(true); 
+  const [isShowingFavorites, setIsShowingFavorites] = useState(false); 
 
-  // --- STATE BARU: Manajemen Akun & Favorit ---
-  const [users, setUsers] = useState(loadUsersDB()); // Database semua pengguna
-  const [currentUser, setCurrentUser] = useState(null); // Username yang sedang login
-  const [favorites, setFavorites] = useState([]); // Favorit milik currentUser
+  const [users, setUsers] = useState(loadUsersDB()); 
+  const [currentUser, setCurrentUser] = useState(null); 
+  const [favorites, setFavorites] = useState([]); 
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false);
-  const [isRegisterModalVisible, setIsRegisterModalVisible] = useState(false); // Modal baru
+  const [isRegisterModalVisible, setIsRegisterModalVisible] = useState(false); 
 
 
-  // --- EFEK BARU: Cek sesi login saat aplikasi dimuat ---
   useEffect(() => {
     const loggedInUser = localStorage.getItem('currentUser');
     if (loggedInUser && users[loggedInUser]) {
         setCurrentUser(loggedInUser);
-        setFavorites(users[loggedInUser].favorites || []);
     }
-  }, []); // [] = Hanya berjalan sekali saat mount
+  }, []); 
 
-  
-  // --- (Fungsi Navigasi & Pencarian tidak berubah) ---
+  useEffect(() => {
+    if (currentUser && users[currentUser]) {
+        setFavorites(users[currentUser].favorites || []);
+    } else {
+        setFavorites([]);
+    }
+  }, [users, currentUser]); 
+
+
   const handleNavFilter = (navType) => {
       let query = { title: 'popular', year: '', type: 'movie' }; 
       switch (navType) {
@@ -82,108 +78,108 @@ function App() {
       }
       setSearchQuery(query);
       setIsAdvancedFilterVisible(false); 
+      setIsShowingFavorites(false); 
   };
-  const handleSearch = (query) => { setSearchQuery(query); };
-  const toggleAdvancedFilter = () => { setIsAdvancedFilterVisible(prev => !prev); };
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    setIsShowingFavorites(false); 
+  };
+  const toggleAdvancedFilter = () => {
+      setIsAdvancedFilterVisible(prev => !prev);
+  };
 
-  // --- (Fungsi Modal Film tidak berubah) ---
   const handleMovieClick = (imdbID) => { setSelectedMovieId(imdbID); };
   const handleCloseMovieModal = () => {
     setSelectedMovieId(null);
     setMovieDetail(null);
   };
 
-  // --- MODIFIKASI KRITIS: `toggleFavorite` kini bergantung pada `currentUser` ---
   const toggleFavorite = useCallback((movie) => {
     if (!currentUser) {
         alert('Anda harus login untuk menambah favorit!');
         return;
     }
-
-    setFavorites(prevFavorites => {
-        const isFavorite = prevFavorites.some(fav => fav.imdbID === movie.imdbID);
+    setUsers(prevUsers => {
+        const oldFavorites = prevUsers[currentUser]?.favorites || [];
+        const isFavorite = oldFavorites.some(fav => fav.imdbID === movie.imdbID);
         let newFavorites;
-
         if (isFavorite) {
-            newFavorites = prevFavorites.filter(fav => fav.imdbID !== movie.imdbID);
+            newFavorites = oldFavorites.filter(fav => fav.imdbID !== movie.imdbID);
         } else {
-            newFavorites = [...prevFavorites, movie];
+            newFavorites = [...oldFavorites, movie];
         }
-
-        // Simpan favorit ke database pengguna yang sedang login
-        const updatedUser = { ...users[currentUser], favorites: newFavorites };
-        const updatedUsersDB = { ...users, [currentUser]: updatedUser };
-        
-        setUsers(updatedUsersDB); // Update state database
-        saveUsersDB(updatedUsersDB); // Simpan ke localStorage
-
-        return newFavorites;
+        const updatedUser = { ...prevUsers[currentUser], favorites: newFavorites };
+        const updatedUsersDB = { ...prevUsers, [currentUser]: updatedUser };
+        saveUsersDB(updatedUsersDB); 
+        return updatedUsersDB;
     });
-  }, [currentUser, users]); 
+  }, [currentUser]); 
 
-  // --- FUNGSI BARU: Manajemen Modal Login/Register ---
+
   const openLoginModal = () => {
     setIsRegisterModalVisible(false);
     setIsLoginModalVisible(true);
   };
-
   const openRegisterModal = () => {
     setIsLoginModalVisible(false);
     setIsRegisterModalVisible(true);
   };
-
   const closeAllModals = () => {
     setIsLoginModalVisible(false);
     setIsRegisterModalVisible(false);
   };
+  const handleShowFavorites = () => {
+    if (!currentUser) {
+        alert('Anda harus login untuk melihat favorit.');
+        openLoginModal();
+        return;
+    }
+    setIsShowingFavorites(true);
+    setLoading(false);
+    setError(null);
+  };
 
+  const handleGoHome = () => {
+    setIsShowingFavorites(false);
+    setSearchQuery(null);
+    setMovies([]); 
+    setLoading(true); 
+    setError(null);
+    setIsAdvancedFilterVisible(true); 
+  };
 
-  // --- MODIFIKASI: Logika Login ---
   const handleLoginAttempt = (username, password) => {
     const user = users[username];
-
     if (user && user.password === password) {
-        setCurrentUser(username);
-        setFavorites(user.favorites || []);
-        localStorage.setItem('currentUser', username); // Simpan sesi
+        setCurrentUser(username); 
+        localStorage.setItem('currentUser', username); 
         closeAllModals();
         return true; 
     }
-    return false; // Gagal login
+    return false; 
   };
-
-  // --- FUNGSI BARU: Logika Register ---
   const handleRegisterAttempt = (username, password) => {
     if (users[username]) {
-        return false; // Username sudah ada
+        return false; 
     }
-
-    // Buat pengguna baru
     const newUser = { password: password, favorites: [] };
     const updatedUsersDB = { ...users, [username]: newUser };
-    
-    setUsers(updatedUsersDB);
+    setUsers(updatedUsersDB); 
     saveUsersDB(updatedUsersDB);
-
-    // Otomatis login setelah daftar
-    setCurrentUser(username);
-    setFavorites([]);
+    setCurrentUser(username); 
     localStorage.setItem('currentUser', username);
-    
     closeAllModals();
     return true;
   };
-
-  // --- MODIFIKASI: Logika Logout ---
   const handleLogout = () => {
-    setCurrentUser(null);
-    setFavorites([]);
-    localStorage.removeItem('currentUser'); // Hapus sesi
+    setCurrentUser(null); 
+    localStorage.removeItem('currentUser'); 
+    setIsShowingFavorites(false); 
   };
 
-  // --- ( useEffect untuk memuat film awal tidak berubah ) ---
   useEffect(() => {
-      if (!API_KEY || movies.length > 0 || searchQuery !== null) return; 
+      if (!API_KEY || movies.length > 0 || searchQuery !== null || isShowingFavorites) return; 
+      
       const fetchInitialMovies = async () => {
           setLoading(true);
           setError(null);
@@ -218,13 +214,11 @@ function App() {
           }
       };
       fetchInitialMovies();
-  }, [API_KEY, API_URL, searchQuery]); 
+  }, [API_KEY, API_URL, searchQuery, isShowingFavorites, movies.length]); 
 
-  // --- ( useEffect untuk search film tidak berubah ) ---
   useEffect(() => {
-    if (searchQuery === null || searchQuery.title === '' || !API_KEY) {
-        setError(null);
-        if (!API_KEY && searchQuery) setError("Error: API Key is missing or invalid.");
+    if (searchQuery === null || searchQuery.title === '' || !API_KEY || isShowingFavorites) {
+        if (isShowingFavorites) setError(null);
         return;
     }
     const fetchMovies = async () => {
@@ -256,9 +250,8 @@ function App() {
         }
     };
     fetchMovies();
-  }, [searchQuery, API_URL]);
+  }, [searchQuery, API_URL, isShowingFavorites]); 
 
-  // --- ( useEffect untuk detail film tidak berubah ) ---
   useEffect(() => {
     if (!selectedMovieId || !API_KEY) {
       return;
@@ -287,9 +280,9 @@ function App() {
   }, [selectedMovieId, API_URL]);
 
 
-  // MODIFIKASI: Cek favorit berdasarkan state 'favorites' (yang sudah spesifik per user)
   const isFavorite = movieDetail ? favorites.some(fav => fav.imdbID === movieDetail.imdbID) : false;
-  const hasSearched = searchQuery !== null; 
+  const moviesToDisplay = isShowingFavorites ? favorites : movies;
+  const hasResult = isShowingFavorites || searchQuery !== null;
 
   return (
     <main>
@@ -298,13 +291,15 @@ function App() {
         isFilterActive={isAdvancedFilterVisible}
         onNavFilter={handleNavFilter}
         onSearch={handleSearch}
-        
-        // --- PROPS LOGIN/LOGOUT DIMODIFIKASI ---
-        isLoggedIn={!!currentUser} // Cek jika currentUser tidak null
-        onLoginClick={openLoginModal} // Buka modal login
+        isLoggedIn={!!currentUser} 
+        onLoginClick={openLoginModal} 
         onLogout={handleLogout}
+        onShowFavorites={handleShowFavorites}
+        onGoHome={handleGoHome} 
       />
       
+      {}
+
       {isAdvancedFilterVisible && (
           <div className="filter-background-wrapper">
               <div className="container"> 
@@ -315,15 +310,14 @@ function App() {
       
       <div className="container"> 
         <SearchResult 
-          movies={movies} 
+          movies={moviesToDisplay} 
           loading={loading} 
           error={error} 
           onMovieClick={handleMovieClick}
-          hasSearched={hasSearched} 
-          
-          // --- PROPS BARU: Kirim daftar favorit ke SearchResult ---
-          favorites={favorites}
-          onToggleFavorite={toggleFavorite}
+          hasSearched={hasResult} 
+          isShowingFavorites={isShowingFavorites} 
+          favorites={favorites} 
+          onToggleFavorite={toggleFavorite} 
           isLoggedIn={!!currentUser}
         />
       </div>
@@ -338,7 +332,6 @@ function App() {
         />
       )}
 
-      {/* --- RENDER MODAL LOGIN & REGISTER --- */}
       <LoginModal 
         isVisible={isLoginModalVisible}
         onClose={closeAllModals}
@@ -353,7 +346,7 @@ function App() {
         onSwitchToLogin={openLoginModal}
       />
       
-      <Footer nama="Nadia Anata" nim="123140060" />
+      <Footer nama="Nadia Anatashiva" nim="123140060" />
     </main>
   );
 }

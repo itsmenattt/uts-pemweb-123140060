@@ -1,10 +1,11 @@
-// src/components/AppHeader.jsx
 import { useState } from 'react';
 import './AppHeader.css';
 
 function AppHeader({ 
     onToggleFilter, isFilterActive, onNavFilter, onSearch, 
-    isLoggedIn, onLoginClick, onLogout 
+    isLoggedIn, onLoginClick, onLogout,
+    onShowFavorites, 
+    onGoHome 
 }) { 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -16,8 +17,7 @@ function AppHeader({
         } else if (action === 'logout') {
             onLogout();
         } else if (action === 'favorites') {
-            console.log("Menampilkan daftar favorit..."); 
-            // TO DO: Anda perlu menambahkan prop onShowFavorites di App.jsx jika ingin mengimplementasikannya
+            onShowFavorites();
         }
     };
     
@@ -28,16 +28,25 @@ function AppHeader({
             <div className="navbar">
                 <div className="container navbar-content">
                     <div className="navbar-left">
-                        <div className="logo">Movie Explorer</div>
+                        {}
+                        <div 
+                          className="logo" 
+                          onClick={onGoHome} 
+                          title="Kembali ke Home"
+                        >
+                          Movie Explorer
+                        </div>
+                        
                         <nav className="main-nav">
                             <div className="nav-item-functional" onClick={() => onNavFilter('movie')} tabIndex="0">Movies</div>
                             <div className="nav-item-functional" onClick={() => onNavFilter('series')} tabIndex="0">TV Shows</div>
                             <div className="nav-item-functional" onClick={() => onNavFilter('more')} tabIndex="0">More</div>
                         </nav>
                     </div>
+                    
+                    {}
                     <div className="navbar-right">
                         
-                        {/* Tombol Pencarian */}
                         <button 
                             className={`search-icon-btn ${isFilterActive ? 'is-active' : ''}`} 
                             onClick={onToggleFilter}
@@ -52,7 +61,6 @@ function AppHeader({
                             />
                         </button>
                         
-                        {/* BURGER MENU */}
                         <div className="burger-menu-wrapper">
                             <button 
                                 className="burger-menu-toggle"
@@ -79,7 +87,7 @@ function AppHeader({
                                             onClick={() => handleMenuClick('logout')}
                                             tabIndex="0"
                                         >
-                                            → Logout
+                                            Logout
                                         </div>
                                     ) : (
                                         <div 
