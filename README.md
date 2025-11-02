@@ -1,6 +1,6 @@
 # 🎬 Movie Explorer — Movie Database Explorer
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-Vercel-000000?style=flat-square&logo=vercel)](https://movie-explorer-yourname.vercel.app) [![Repo](https://img.shields.io/badge/Repo-GitHub-24292e?style=flat-square&logo=github)](https://github.com/yourusername/uts-pemweb-123140060)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-Vercel-000000?style=flat-square&logo=vercel)](https://uts-pemweb-123140060.vercel.app) [![Repo](https://img.shields.io/badge/Repo-GitHub-24292e?style=flat-square&logo=github)](https://github.com/yourusername/uts-pemweb-123140060)
 
 Movie Explorer adalah aplikasi web sederhana untuk mencari, menelusuri, dan menyimpan informasi film menggunakan OMDb API. Ideal untuk demo UI, tugas kuliah, atau material portofolio.
 
@@ -18,27 +18,31 @@ Movie Explorer adalah aplikasi web sederhana untuk mencari, menelusuri, dan meny
 
 ## 🎯 Live Demo
 
-Contoh link deploy (ganti dengan URL live Anda):
-
-https://movie-explorer-yourname.vercel.app
-
-Atau klik badge di atas untuk membuka demo.
+[Buka Demo di Vercel](https://uts-pemweb-123140060.vercel.app/)
 
 ---
 
 ## 📸 Screenshot
 
-Masukkan screenshot ke repo di path `./screenshot-desktop.png` dan `./screenshot-mobile.png`.
-
 Desktop preview:
 
-![Desktop Preview](./screenshot-desktop.png)
+![Desktop Preview](https://github.com/user-attachments/assets/1d1fae84-1dd2-4eb9-acea-3dec61c7b4e7)
 
 Mobile preview:
 
 ![Mobile Preview](./screenshot-mobile.png)
 
-Jika Anda ingin, saya bisa menambahkan screenshot jika Anda upload file ke tempat yang diinginkan.
+Movie preview:
+
+![Movie Preview](https://github.com/user-attachments/assets/a3aea967-7a8c-4825-9162-7d5f42826070)
+
+Login preview:
+
+![Login Preview](https://github.com/user-attachments/assets/d34434c4-63ea-480c-9994-1fa2447f8061)
+
+Favorites preview:
+
+![Favorites Preview](https://github.com/user-attachments/assets/cd8d6970-838d-4f8d-912c-975f223f0f60)
 
 ---
 
@@ -79,18 +83,51 @@ npm run build
 
 ## 📁 Struktur Singkat
 
-- `src/` — kode React (komponen & gaya)
-- `public/` — aset statis
-- `package.json` — skrip & dependensi
+```
+uts-pemweb-123140060
+├── node_modules
+├── public
+│   ├── background.jpg
+│   ├── button_search.png
+│   └── vite.svg
+├── src
+│   ├── assets
+│   │   └── react.svg
+│   ├── components
+│   │   ├── AppHeader.css
+│   │   ├── AppHeader.jsx
+│   │   ├── Footer.css
+│   │   ├── Footer.jsx
+│   │   ├── HeroOverlay.css
+│   │   ├── HeroOverlay.jsx
+│   │   ├── LoginModal.css
+│   │   ├── LoginModal.jsx
+│   │   ├── MovieFilter.css
+│   │   ├── MovieFilter.jsx
+│   │   ├── MovieModal.css
+│   │   ├── MovieModal.jsx
+│   │   ├── RegisterModal.css
+│   │   ├── RegisterModal.jsx
+│   │   ├── SearchResult.css
+│   │   └── SearchResult.jsx
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .env
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+└── vite.config.js
+```
 
 ---
 
-## ✅ Langkah Berikutnya (Opsional yang bisa saya bantu)
+Jika Anda ingin, saya bisa:
 
-- Tambahkan screenshot ke repo dan saya update README agar tampil langsung
-- Ganti placeholder Vercel dengan link live Anda dan tambahkan badge deploy aktif
-- Tambahkan badge lisensi (MIT) atau instruksi CI jika diinginkan
-
----
-
-Terima kasih — jika Anda mau saya perbaiki tone (lebih formal / lebih santai) atau buat versi bahasa Inggris, sebutkan preferensi Anda.
+- Menambahkan screenshot ke repo (upload file),
+- Mengganti placeholder Vercel dengan link live Anda, dan
+- Menambahkan badge deploy aktif atau file LICENSE.
