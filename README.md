@@ -1,7 +1,6 @@
 # 🎬 Movie Explorer — Movie Database Explorer
 
-[![Homepage](<img width="1410" height="892" alt="image" src="https://github.com/user-attachments/assets/1d1fae84-1dd2-4eb9-acea-3dec61c7b4e7" />
-)(https://github.com/yourusername/uts-pemweb-123140060)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-Vercel-000000?style=flat-square&logo=vercel)](https://uts-pemweb-123140060.vercel.app) [![Repo](https://img.shields.io/badge/Repo-GitHub-24292e?style=flat-square&logo=github)](https://github.com/yourusername/uts-pemweb-123140060)
 
 Movie Explorer adalah aplikasi web sederhana untuk mencari, menelusuri, dan menyimpan informasi film menggunakan OMDb API. Ideal untuk demo UI, tugas kuliah, atau material portofolio.
 
@@ -19,37 +18,31 @@ Movie Explorer adalah aplikasi web sederhana untuk mencari, menelusuri, dan meny
 
 ## 🎯 Live Demo
 
-https:[//movie-explorer-yourname.vercel.app](https://uts-pemweb-123140060.vercel.app/)
+[Buka Demo di Vercel](https://uts-pemweb-123140060.vercel.app/)
 
 ---
 
 ## 📸 Screenshot
 
-Masukkan screenshot ke repo di path `./screenshot-desktop.png` dan `./screenshot-mobile.png`.
-
 Desktop preview:
 
-![Desktop Preview](<img width="1410" height="892" alt="image" src="https://github.com/user-attachments/assets/1d1fae84-1dd2-4eb9-acea-3dec61c7b4e7" />)
+![Desktop Preview](https://github.com/user-attachments/assets/1d1fae84-1dd2-4eb9-acea-3dec61c7b4e7)
 
 Mobile preview:
 
-![Favorites Preview]()
+![Mobile Preview](./screenshot-mobile.png)
 
 Movie preview:
 
-![Movie Preview](<img width="1878" height="904" alt="image" src="https://github.com/user-attachments/assets/a3aea967-7a8c-4825-9162-7d5f42826070" />
-)
+![Movie Preview](https://github.com/user-attachments/assets/a3aea967-7a8c-4825-9162-7d5f42826070)
 
 Login preview:
 
-![Login Preview](<img width="1895" height="914" alt="image" src="https://github.com/user-attachments/assets/d34434c4-63ea-480c-9994-1fa2447f8061" />
-)
+![Login Preview](https://github.com/user-attachments/assets/d34434c4-63ea-480c-9994-1fa2447f8061)
 
 Favorites preview:
 
-![Favorites Preview](<img width="1902" height="895" alt="image" src="https://github.com/user-attachments/assets/cd8d6970-838d-4f8d-912c-975f223f0f60" />
-)
-
+![Favorites Preview](https://github.com/user-attachments/assets/cd8d6970-838d-4f8d-912c-975f223f0f60)
 
 ---
 
@@ -89,7 +82,8 @@ npm run build
 ---
 
 ## 📁 Struktur Singkat
--
+
+```
 uts-pemweb-123140060
 ├── node_modules
 ├── public
@@ -128,14 +122,4 @@ uts-pemweb-123140060
 ├── package.json
 ├── README.md
 └── vite.config.js
----
-
-## ✅ Langkah Berikutnya (Opsional yang bisa saya bantu)
-
-- Tambahkan screenshot ke repo dan saya update README agar tampil langsung
-- Ganti placeholder Vercel dengan link live Anda dan tambahkan badge deploy aktif
-- Tambahkan badge lisensi (MIT) atau instruksi CI jika diinginkan
-
----
-
-Terima kasih — jika Anda mau saya perbaiki tone (lebih formal / lebih santai) atau buat versi bahasa Inggris, sebutkan preferensi Anda.
+```
