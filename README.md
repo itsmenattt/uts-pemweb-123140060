@@ -90,10 +90,44 @@ npm run build
 
 ## 📁 Struktur Singkat
 
-- `src/` — kode React (komponen & gaya)
-- `public/` — aset statis
-- `package.json` — skrip & dependensi
-
+uts-pemweb-123140060
+├── node_modules
+├── public
+│   ├── background.jpg
+│   ├── button_search.png
+│   └── vite.svg
+├── src
+│   ├── assets
+│   │   └── react.svg
+│   ├── components
+│   │   ├── AppHeader.css
+│   │   ├── AppHeader.jsx
+│   │   ├── Footer.css
+│   │   ├── Footer.jsx
+│   │   ├── HeroOverlay.css
+│   │   ├── HeroOverlay.jsx
+│   │   ├── LoginModal.css
+│   │   ├── LoginModal.jsx
+│   │   ├── MovieFilter.css
+│   │   ├── MovieFilter.jsx
+│   │   ├── MovieModal.css
+│   │   ├── MovieModal.jsx
+│   │   ├── RegisterModal.css
+│   │   ├── RegisterModal.jsx
+│   │   ├── SearchResult.css
+│   │   └── SearchResult.jsx
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .env
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+└── vite.config.js
 ---
 
 ## ✅ Langkah Berikutnya (Opsional yang bisa saya bantu)
