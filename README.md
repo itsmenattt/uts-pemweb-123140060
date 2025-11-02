@@ -1,66 +1,75 @@
 # 🎬 Movie Explorer — Movie Database Explorer
 
-Sebuah antarmuka pencarian dan eksplorasi film ringan yang memanfaatkan OMDb API untuk menampilkan poster, informasi film, dan rekomendasi. Dirancang agar cepat, responsif, dan mudah dikembangkan.
+[![Live Demo](https://img.shields.io/badge/Live-Demo-Vercel-000000?style=flat-square&logo=vercel)](https://movie-explorer-yourname.vercel.app) [![Repo](https://img.shields.io/badge/Repo-GitHub-24292e?style=flat-square&logo=github)](https://github.com/yourusername/uts-pemweb-123140060)
 
-**Status:** Development / Demo ready
-
----
-
-## ✨ Ringkasan Singkat
-
-- **Nama Aplikasi** : Movie Explorer
-- **Teknologi**     : React (Vite), HTML, CSS
-- **Data Provider** : OMDb API (https://www.omdbapi.com)
+Movie Explorer adalah aplikasi web sederhana untuk mencari, menelusuri, dan menyimpan informasi film menggunakan OMDb API. Ideal untuk demo UI, tugas kuliah, atau material portofolio.
 
 ---
 
-## Fitur Utama
+## 🔥 Sorotan
 
-- Pencarian film berdasarkan judul
-- Tampilan kartu film dengan poster, judul, dan tahun rilis
-- Loading state & handling error sederhana
-- Modal detail film (preview lebih lengkap)
-- Responsive layout (desktop & mobile)
+- Pencarian cepat berdasarkan judul
+- Kartu film dengan poster, judul, dan tahun rilis
+- Modal detail film (informasi lebih lengkap)
+- Indikator loading dan penanganan error sederhana
+- Desain responsif untuk desktop & mobile
 
 ---
 
-## Demo Lokal
+## 🎯 Live Demo
 
-1. Pastikan Node.js & npm terpasang.
-2. Instal dependensi dan jalankan dev server:
+Contoh link deploy (ganti dengan URL live Anda):
+
+https://movie-explorer-yourname.vercel.app
+
+Atau klik badge di atas untuk membuka demo.
+
+---
+
+## 📸 Screenshot
+
+Masukkan screenshot ke repo di path `./screenshot-desktop.png` dan `./screenshot-mobile.png`.
+
+Desktop preview:
+
+![Desktop Preview](./screenshot-desktop.png)
+
+Mobile preview:
+
+![Mobile Preview](./screenshot-mobile.png)
+
+Jika Anda ingin, saya bisa menambahkan screenshot jika Anda upload file ke tempat yang diinginkan.
+
+---
+
+## 🛠️ Teknologi
+
+- React (Vite)
+- OMDb API
+- HTML & CSS (Flexbox)
+
+---
+
+## 🚀 Cara Menjalankan (Windows PowerShell)
+
+1. Install dependencies dan jalankan dev server:
 
 ```powershell
 npm install
 npm run dev
 ```
 
-3. Buka browser ke alamat yang ditampilkan (contoh: http://localhost:5173)
+2. Build untuk produksi:
+
+```powershell
+npm run build
+```
+
+3. Deploy ke Vercel: hubungkan repository Anda ke Vercel atau gunakan CLI `vercel`.
 
 ---
 
-## Deploy / Live (Vercel)
-
-Anda bisa mendeploy aplikasi ini ke Vercel secara cepat. Contoh link deploy (ganti dengan link live Anda):
-
-https://movie-explorer-yourname.vercel.app
-
-Jika Anda sudah memiliki deployment, silakan ganti URL di atas dengan link live proyek Anda.
-
----
-
-## Screenshot
-
-Masukkan screenshot aplikasi Anda ke file `screenshot.png` di root proyek atau folder `public/`.
-
-Contoh penempatan gambar di README (gunakan relative path):
-
-![Movie Explorer Preview](./screenshot.png)
-
-> Jika ingin, saya bisa menambahkan screenshot ke repo jika Anda upload gambar ke path yang diinginkan.
-
----
-
-## Identitas
+## 👩‍💻 Identitas
 
 - **Nama:** Nadia Anatashiva
 - **NIM:** 123140060
@@ -68,25 +77,20 @@ Contoh penempatan gambar di README (gunakan relative path):
 
 ---
 
-## Struktur Singkat Proyek
+## 📁 Struktur Singkat
 
-- `src/` — kode React (komponen, gaya)
-- `public/` — aset statis (poster placeholder, favicon, screenshot)
-- `package.json` — skrip dan dependensi
-
----
-
-## Variabel Lingkungan (Opsional)
-
-Jika menggunakan API key OMDb secara lokal, tambahkan file `.env` dengan:
-
-```
-VITE_OMDB_API_KEY=your_api_key_here
-```
+- `src/` — kode React (komponen & gaya)
+- `public/` — aset statis
+- `package.json` — skrip & dependensi
 
 ---
 
-## Tips Deploy & Improvement
+## ✅ Langkah Berikutnya (Opsional yang bisa saya bantu)
 
-- Untuk tampilan profesional, tambahkan badge Vercel pada README setelah deployment.
-- Pertimbangkan menambahkan screenshot mobile dan desktop (2 gambar) agar reviewer melihat responsivitas.
+- Tambahkan screenshot ke repo dan saya update README agar tampil langsung
+- Ganti placeholder Vercel dengan link live Anda dan tambahkan badge deploy aktif
+- Tambahkan badge lisensi (MIT) atau instruksi CI jika diinginkan
+
+---
+
+Terima kasih — jika Anda mau saya perbaiki tone (lebih formal / lebih santai) atau buat versi bahasa Inggris, sebutkan preferensi Anda.
