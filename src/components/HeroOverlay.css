@@ -4,7 +4,7 @@
     width: 100%;
     margin-bottom: 0;
     background-image: linear-gradient(rgba(19, 36, 64, 0.8), rgba(19, 36, 64, 0.8)),
-                      url('../public/background.jpg');
+                      url('public/background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
