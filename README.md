@@ -1,6 +1,6 @@
 # 🎬 Movie Explorer — Movie Database Explorer
 
-[![Live Demo](https://uts-pemweb-123140060.vercel.app) [![Repo](https://img.shields.io/badge/Repo-GitHub-24292e?style=flat-square&logo=github)]](https://github.com/itsmenattt/uts-pemweb-123140060)
+[![Repo](https://img.shields.io/badge/Repo-GitHub-24292e?style=flat-square&logo=github)]](https://github.com/itsmenattt/uts-pemweb-123140060)
 
 Movie Explorer adalah aplikasi web sederhana untuk mencari, menelusuri, dan menyimpan informasi film menggunakan OMDb API. Ideal untuk demo UI, tugas kuliah, atau material portofolio.
 
