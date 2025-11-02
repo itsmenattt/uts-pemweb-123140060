@@ -1,10 +1,6 @@
 # 🎬 Movie Explorer — Movie Database Explorer
 
-<<<<<<< HEAD
-[![Live Demo](https://img.shields.io/badge/Live-Demo-Vercel-000000?style=flat-square&logo=vercel)](https://uts-pemweb-123140060.vercel.app) [![Repo](https://img.shields.io/badge/Repo-GitHub-24292e?style=flat-square&logo=github)](https://github.com/yourusername/uts-pemweb-123140060)
-=======
 [![Repo](https://img.shields.io/badge/Repo-GitHub-24292e?style=flat-square&logo=github)](https://github.com/itsmenattt/uts-pemweb-123140060)
->>>>>>> ea68f172a5a02e45abd3cefc47848e4761666b29
 
 Movie Explorer adalah aplikasi web sederhana untuk mencari, menelusuri, dan menyimpan informasi film menggunakan OMDb API. Ideal untuk demo UI, tugas kuliah, atau material portofolio.
 
@@ -22,12 +18,7 @@ Movie Explorer adalah aplikasi web sederhana untuk mencari, menelusuri, dan meny
 
 ## 🎯 Live Demo
 
-<<<<<<< HEAD
-[Buka Demo di Vercel](https://uts-pemweb-123140060.vercel.app/)
-=======
 Link Vercel : https://uts-pemweb-123140060.vercel.app/
->>>>>>> ea68f172a5a02e45abd3cefc47848e4761666b29
-
 ---
 
 ## 📸 Screenshot
@@ -131,14 +122,3 @@ uts-pemweb-123140060
 ├── README.md
 └── vite.config.js
 ```
-<<<<<<< HEAD
-
----
-
-Jika Anda ingin, saya bisa:
-
-- Menambahkan screenshot ke repo (upload file),
-- Mengganti placeholder Vercel dengan link live Anda, dan
-- Menambahkan badge deploy aktif atau file LICENSE.
-=======
->>>>>>> ea68f172a5a02e45abd3cefc47848e4761666b29
