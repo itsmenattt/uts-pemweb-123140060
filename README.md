@@ -1,38 +1,100 @@
-# 🎬 Movie Explorer: Advanced Search & Filtering App
-**Status Pengembangan:** *Initial Setup & Component Structure Completed*
+# 🎬 Movie Explorer — Movie Database Explorer
 
-Aplikasi ini adalah implementasi *search and filtering* yang meniru fungsionalitas pencarian lanjutan pada platform streaming atau katalog film. Dibangun menggunakan React JS, proyek ini fokus pada pengelolaan *input* dan *state* kompleks.
+Sebuah antarmuka pencarian dan eksplorasi film ringan yang memanfaatkan OMDb API untuk menampilkan poster, informasi film, dan rekomendasi. Dirancang agar cepat, responsif, dan mudah dikembangkan.
 
----
-
-## ✨ Fitur Utama (Berdasarkan Tampilan)
-
-* **Pencarian Lanjutan (Advanced Filtering):** Memungkinkan pengguna mencari film berdasarkan beberapa kriteria sekaligus:
-    * **Judul Film**
-    * **Tahun Rilis**
-    * **Tipe** (Movie, TV Show, dll.)
-    * **Minimum Rating** (Menggunakan *range slider*)
-* **Loading State:** Menampilkan indikator `Mencari film...` saat data sedang diproses.
+**Status:** Development / Demo ready
 
 ---
 
-## 🛠️ Detail Implementasi Teknis
+## ✨ Ringkasan Singkat
 
-Meskipun tampilan fokus pada *filtering*, struktur kode di balik layar harus mencakup konsep fundamental React berikut:
-
-| Konsep React | Implementasi | Fungsi |
-| :--- | :--- | :--- |
-| **State Management** | `useState` | Mengelola nilai dari setiap input form (`judul`, `tahun`, `tipe`, `rating`). |
-| **Complex State** | Objek State | Semua nilai filter dikelola dalam **satu objek state** tunggal (`searchParams`) untuk kemudahan reset. |
-| **Event Handling** | `onChange` | Mengupdate state secara *real-time* saat *slider* atau *input* teks diubah. |
-| **Conditional Rendering** | `loading` | Menampilkan "Mencari film..." hanya saat proses pencarian aktif. |
-| **Component Composition** | `FilterForm` | Komponen untuk menampung seluruh logika form dan filtering. |
+- **Nama Aplikasi** : Movie Explorer
+- **Teknologi**     : React (Vite), HTML, CSS
+- **Data Provider** : OMDb API (https://www.omdbapi.com)
 
 ---
 
-## 🚀 Instalasi dan Menjalankan Proyek
+## Fitur Utama
 
-### 1. Kloning Repositori
-```bash
-git clone [https://github.com/](https://github.com/)[username_anda]/movie-explorer-repo.git
-cd movie-explorer-repo
+- Pencarian film berdasarkan judul
+- Tampilan kartu film dengan poster, judul, dan tahun rilis
+- Loading state & handling error sederhana
+- Modal detail film (preview lebih lengkap)
+- Responsive layout (desktop & mobile)
+
+---
+
+## Demo Lokal
+
+1. Pastikan Node.js & npm terpasang.
+2. Instal dependensi dan jalankan dev server:
+
+```powershell
+npm install
+npm run dev
+```
+
+3. Buka browser ke alamat yang ditampilkan (contoh: http://localhost:5173)
+
+---
+
+## Deploy / Live (Vercel)
+
+Anda bisa mendeploy aplikasi ini ke Vercel secara cepat. Contoh link deploy (ganti dengan link live Anda):
+
+https://movie-explorer-yourname.vercel.app
+
+Jika Anda sudah memiliki deployment, silakan ganti URL di atas dengan link live proyek Anda.
+
+---
+
+## Screenshot
+
+Masukkan screenshot aplikasi Anda ke file `screenshot.png` di root proyek atau folder `public/`.
+
+Contoh penempatan gambar di README (gunakan relative path):
+
+![Movie Explorer Preview](./screenshot.png)
+
+> Jika ingin, saya bisa menambahkan screenshot ke repo jika Anda upload gambar ke path yang diinginkan.
+
+---
+
+## Identitas
+
+- **Nama:** Nadia Anata
+- **NIM:** 123140060
+- **Keperluan:** UTS Pemrograman Web
+
+---
+
+## Struktur Singkat Proyek
+
+- `src/` — kode React (komponen, gaya)
+- `public/` — aset statis (poster placeholder, favicon, screenshot)
+- `package.json` — skrip dan dependensi
+
+---
+
+## Variabel Lingkungan (Opsional)
+
+Jika menggunakan API key OMDb secara lokal, tambahkan file `.env` dengan:
+
+```
+VITE_OMDB_API_KEY=your_api_key_here
+```
+
+---
+
+## Tips Deploy & Improvement
+
+- Untuk tampilan profesional, tambahkan badge Vercel pada README setelah deployment.
+- Pertimbangkan menambahkan screenshot mobile dan desktop (2 gambar) agar reviewer melihat responsivitas.
+
+---
+
+Jika mau, saya bisa:
+
+- Menambahkan screenshot langsung ke repo (jika Anda upload file),
+- Mengganti placeholder Vercel dengan link live Anda,
+- Menambahkan badge dan instruksi build lebih detail.
