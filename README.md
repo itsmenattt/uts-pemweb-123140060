@@ -18,7 +18,7 @@ Movie Explorer adalah aplikasi web sederhana untuk mencari, menelusuri, dan meny
 
 ## 🎯 Live Demo
 
-[Buka Demo di Vercel](https://uts-pemweb-123140060.vercel.app/)
+Link Vercel : https://uts-pemweb-123140060.vercel.app/
 
 ---
 
