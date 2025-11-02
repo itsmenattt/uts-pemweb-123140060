@@ -1,6 +1,6 @@
 # 🎬 Movie Explorer — Movie Database Explorer
 
-[![Live Demo](https://www.google.com/url?sa=i&url=https%3A%2F%2F1000logos.net%2Fvercel-logo%2F&psig=AOvVaw3URlGQXLcVkGxy_izmKrWL&ust=1762164988082000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMj7v6Ke05ADFQAAAAAdAAAAABAE)](https://uts-pemweb-123140060.vercel.app) [![Repo](https://img.shields.io/badge/Repo-GitHub-24292e?style=flat-square&logo=github)](https://github.com/itsmenattt/uts-pemweb-123140060)
+![Live Demo](https://www.google.com/url?sa=i&url=https%3A%2F%2F1000logos.net%2Fvercel-logo%2F&psig=AOvVaw3URlGQXLcVkGxy_izmKrWL&ust=1762164988082000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCMj7v6Ke05ADFQAAAAAdAAAAABAE)(https://uts-pemweb-123140060.vercel.app) [![Repo](https://img.shields.io/badge/Repo-GitHub-24292e?style=flat-square&logo=github)](https://github.com/itsmenattt/uts-pemweb-123140060)
 
 Movie Explorer adalah aplikasi web sederhana untuk mencari, menelusuri, dan menyimpan informasi film menggunakan OMDb API. Ideal untuk demo UI, tugas kuliah, atau material portofolio.
 
