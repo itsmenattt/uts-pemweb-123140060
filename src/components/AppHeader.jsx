@@ -1,12 +1,11 @@
-import { useState } from 'react';
+import { useState } from 'react'; 
 import './AppHeader.css';
 
 function AppHeader({ 
     onToggleFilter, isFilterActive, onNavFilter, onSearch, 
-    isLoggedIn, onLoginClick, onLogout,
-    onShowFavorites, 
-    onGoHome 
+    isLoggedIn, onLoginClick, onLogout, onShowFavorites, onGoHome 
 }) { 
+    
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleMenuClick = (action) => {
@@ -17,7 +16,7 @@ function AppHeader({
         } else if (action === 'logout') {
             onLogout();
         } else if (action === 'favorites') {
-            onShowFavorites();
+            onShowFavorites(); 
         }
     };
     
@@ -28,35 +27,25 @@ function AppHeader({
             <div className="navbar">
                 <div className="container navbar-content">
                     <div className="navbar-left">
-                        {}
-                        <div 
-                          className="logo" 
-                          onClick={onGoHome} 
-                          title="Kembali ke Home"
-                        >
-                          Movie Explorer
-                        </div>
-                        
+                        <div className="logo" onClick={onGoHome}>Movie Explorer</div>
                         <nav className="main-nav">
                             <div className="nav-item-functional" onClick={() => onNavFilter('movie')} tabIndex="0">Movies</div>
                             <div className="nav-item-functional" onClick={() => onNavFilter('series')} tabIndex="0">TV Shows</div>
                             <div className="nav-item-functional" onClick={() => onNavFilter('more')} tabIndex="0">More</div>
                         </nav>
                     </div>
-                    
-                    {}
                     <div className="navbar-right">
                         
                         <button 
                             className={`search-icon-btn ${isFilterActive ? 'is-active' : ''}`} 
                             onClick={onToggleFilter}
-                            title={isFilterActive ? 'Sembunyikan Filter Lanjutan' : 'Tampilkan Filter Lanjutan'}
-                            aria-label="Tampilkan atau Sembunyikan Filter Pencarian Lanjutan" 
+                            title={isFilterActive ? 'Sembunyikan Filter' : 'Tampilkan Filter'}
+                            aria-label="Toggle Search Filter" 
                             tabIndex="0"
                         >
                             <img 
                                 src="/button_search.png" 
-                                alt="Ikon Pencarian" 
+                                alt="Search Icon" 
                                 className="search-icon-img" 
                             />
                         </button>

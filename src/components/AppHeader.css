@@ -47,7 +47,6 @@
     opacity: 1;
 }
 
-/* START PERBAIKAN KRITIS: STYLING BUTTON PENCARIAN */
 .search-icon-btn {
     background: none;
     border: none;
@@ -86,7 +85,7 @@
 
 .burger-menu-toggle {
     background: #132440; 
-    color: #FFFF    ;
+    color: #FFFF;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
@@ -154,19 +153,28 @@
     color: #132440;
 }
 
+/* --- PERBAIKAN KRITIS RESPONSIVE --- */
 @media (max-width: 768px) {
+    /* Pastikan konten tetap 1 baris */
     .navbar-content {
-        flex-direction: column;
-        gap: 10px;
+        flex-direction: row; 
+        justify-content: space-between; /* Logo di kiri, Ikon di kanan */
+        align-items: center;
+        padding: 10px 15px; /* Sesuaikan padding mobile */
     }
+    
+    /* Biarkan lebar auto */
     .navbar-left, .navbar-right {
-        width: 100%;
-        justify-content: center;
+        width: auto;
+        justify-content: flex-start; 
     }
+    
+    /* Sembunyikan navigasi utama di mobile */
     .main-nav {
-        flex-wrap: wrap;
-        justify-content: center;
+        display: none; 
     }
+    
+    /* Pastikan burger menu tetap di kanan */
     .burger-menu-dropdown {
         right: 10px; 
     }

@@ -16,7 +16,7 @@ function MovieFilter({ onSearch, isHero = false }) {
 
   return (
     <section className="movie-filter filter-card-container">
-      <h2>Filter Pencarian Lanjutan</h2>
+      <h2>Filter Pencarian</h2>
       <form onSubmit={handleSubmit} className="advanced-filter-form filter-grid">
         
         <div className="form-group">

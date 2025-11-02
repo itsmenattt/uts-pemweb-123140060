@@ -6,6 +6,7 @@ import SearchResult from './components/SearchResult';
 import MovieModal from './components/MovieModal'; 
 import Footer from './components/Footer'; 
 import LoginModal from './components/LoginModal';
+import HeroOverlay from './components/HeroOverlay';
 import RegisterModal from './components/RegisterModal'; 
 
 const shuffleArray = (array) => {
@@ -42,7 +43,12 @@ function App() {
   const [selectedMovieId, setSelectedMovieId] = useState(null);
   const [detailLoading, setDetailLoading] = useState(false);
   const [movieDetail, setMovieDetail] = useState(null);
-  const [isAdvancedFilterVisible, setIsAdvancedFilterVisible] = useState(true); 
+  
+  // --- PERUBAHAN KRITIS DI SINI ---
+  // Diubah dari true menjadi false agar HeroOverlay muncul di awal
+  const [isAdvancedFilterVisible, setIsAdvancedFilterVisible] = useState(false); 
+  // ---------------------------------
+  
   const [isShowingFavorites, setIsShowingFavorites] = useState(false); 
 
   const [users, setUsers] = useState(loadUsersDB()); 
@@ -97,6 +103,7 @@ function App() {
   const toggleFavorite = useCallback((movie) => {
     if (!currentUser) {
         alert('Anda harus login untuk menambah favorit!');
+        openLoginModal();
         return;
     }
     setUsers(prevUsers => {
@@ -137,15 +144,16 @@ function App() {
     setIsShowingFavorites(true);
     setLoading(false);
     setError(null);
+    setIsAdvancedFilterVisible(false);
   };
 
   const handleGoHome = () => {
     setIsShowingFavorites(false);
     setSearchQuery(null);
     setMovies([]); 
-    setLoading(true); 
+    setLoading(false); 
     setError(null);
-    setIsAdvancedFilterVisible(true); 
+    setIsAdvancedFilterVisible(false); // Tetap false agar HeroOverlay muncul
   };
 
   const handleLoginAttempt = (username, password) => {
@@ -175,10 +183,11 @@ function App() {
     setCurrentUser(null); 
     localStorage.removeItem('currentUser'); 
     setIsShowingFavorites(false); 
+    handleGoHome();
   };
 
   useEffect(() => {
-      if (!API_KEY || movies.length > 0 || searchQuery !== null || isShowingFavorites) return; 
+      if (!API_KEY || (movies.length > 0 && searchQuery === null) || searchQuery !== null || isShowingFavorites) return; 
       
       const fetchInitialMovies = async () => {
           setLoading(true);
@@ -277,12 +286,14 @@ function App() {
       }
     };
     fetchDetail();
-  }, [selectedMovieId, API_URL]);
+  }, [selectedMovieId, API_KEY]);
 
 
   const isFavorite = movieDetail ? favorites.some(fav => fav.imdbID === movieDetail.imdbID) : false;
   const moviesToDisplay = isShowingFavorites ? favorites : movies;
-  const hasResult = isShowingFavorites || searchQuery !== null;
+  const loadingStatus = isShowingFavorites ? false : loading;
+  const errorStatus = isShowingFavorites ? (favorites.length === 0 ? "Anda belum memiliki film favorit." : null) : error;
+  const hasSearched = searchQuery !== null || isShowingFavorites;
 
   return (
     <main>
@@ -298,8 +309,6 @@ function App() {
         onGoHome={handleGoHome} 
       />
       
-      {}
-
       {isAdvancedFilterVisible && (
           <div className="filter-background-wrapper">
               <div className="container"> 
@@ -307,15 +316,19 @@ function App() {
               </div>
           </div>
       )}
+
+      {(!isAdvancedFilterVisible && !isShowingFavorites) && (
+          <HeroOverlay /> 
+      )}
       
       <div className="container"> 
         <SearchResult 
           movies={moviesToDisplay} 
-          loading={loading} 
-          error={error} 
+          loading={loadingStatus} 
+          error={errorStatus}
           onMovieClick={handleMovieClick}
-          hasSearched={hasResult} 
-          isShowingFavorites={isShowingFavorites} 
+          hasSearched={hasSearched} 
+          isFavoritesView={isShowingFavorites} 
           favorites={favorites} 
           onToggleFavorite={toggleFavorite} 
           isLoggedIn={!!currentUser}
