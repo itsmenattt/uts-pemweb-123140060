@@ -25,13 +25,13 @@ Link Vercel : https://uts-pemweb-123140060.vercel.app/
 
 - Desktop preview:
 
-![Homepage](<img width="1324" height="763" alt="image" src="https://github.com/user-attachments/assets/26077576-6daa-4c50-aef7-a46f9e32d3ba" />)
+![Homepage](https://github.com/user-attachments/assets/26077576-6daa-4c50-aef7-a46f9e32d3ba)
 
 ![Filter Pencarian](https://github.com/user-attachments/assets/1d1fae84-1dd2-4eb9-acea-3dec61c7b4e7)
 
 - Mobile preview:
 
-![Mobile Preview](./screenshot-mobile.png)
+![Mobile Preview](https://github.com/user-attachments/assets/b00ca1a9-457f-4902-8f76-b390e01f6e47)
 
 - Movie preview:
 
