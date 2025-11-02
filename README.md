@@ -90,11 +90,3 @@ VITE_OMDB_API_KEY=your_api_key_here
 
 - Untuk tampilan profesional, tambahkan badge Vercel pada README setelah deployment.
 - Pertimbangkan menambahkan screenshot mobile dan desktop (2 gambar) agar reviewer melihat responsivitas.
-
----
-
-Jika mau, saya bisa:
-
-- Menambahkan screenshot langsung ke repo (jika Anda upload file),
-- Mengganti placeholder Vercel dengan link live Anda,
-- Menambahkan badge dan instruksi build lebih detail.
